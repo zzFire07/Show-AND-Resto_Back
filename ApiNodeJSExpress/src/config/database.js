@@ -2,10 +2,19 @@
 const { Sequelize } = require('sequelize');
 
 // Configura los datos de conexión a la base de datos PostgreSQL
-const sequelize = new Sequelize('postgres', 'postgres', 'enzotricolor3', {
+const sequelize = new Sequelize('postgres', 'postgres' , 'admin', {
   host: 'localhost', // Cambia esto si tu base de datos está en un servidor remoto
+  port: '5432', // Cambia esto si tu base de datos utiliza otro puerto
   dialect: 'postgres', // Indica que estamos utilizando PostgreSQL
   logging: false, // Desactiva los logs de Sequelize
+  define: {
+    // No agregues atributos timestamps por defecto
+    timestamps: false,
+    // Evita que Sequelize modifique el nombre de las columnas a camelCase
+    // https://sequelize.org/master/manual/naming-strategies.html
+    underscored: true,  
+  },
+
 });
 
 
