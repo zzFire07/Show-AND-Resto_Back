@@ -11,7 +11,6 @@ const sequelize = new Sequelize('postgres', 'postgres', 'admin', {
     // No agregues atributos timestamps por defecto
     timestamps: false,
     // Evita que Sequelize modifique el nombre de las columnas a camelCase
-    // https://sequelize.org/master/manual/naming-strategies.html
     underscored: true,  
   },
 
