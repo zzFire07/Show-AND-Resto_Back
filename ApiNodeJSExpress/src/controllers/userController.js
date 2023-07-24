@@ -1,4 +1,4 @@
-const UserService = require('../services/userService');
+const UserService = require('../services/userService.js');
 
 // Controlador para obtener un usuario por su ID
 async function getUserById(req, res) {
@@ -16,6 +16,35 @@ async function getUserById(req, res) {
   }
 }
 
+async function findAll(req, res) {
+  try {
+    const allUsers = await UserService.findAll(); 
+    if (allUsers) {
+      return res.status(200).json(allUsers);
+    } else {
+      return res.status(404).json({ message: 'Ningún usuario ha sido encontrado' });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: 'Error al obtener los usuarios', error: error.message });
+  }
+}
+
+async function searchByUser(req, res) {
+  const userName = req.params.userName;
+  try {
+    const users = await UserService.searchByUser(userName); 
+    if (users) {
+      return res.status(200).json(users);
+    } else {
+      return res.status(404).json({ message: 'Ningún usuario ha sido encontrado' });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: 'Error al obtener los usuarios', error: error.message });
+  }
+}
+
 module.exports = {
   getUserById,
+  findAll,
+  searchByUser,
 };
