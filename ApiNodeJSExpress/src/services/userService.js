@@ -14,10 +14,10 @@ async function getUserById(userId) {
 
 async function findAll() {
   try {
-    const allUsers = await UserModel.findAll({
+    const allRestaurants = await UserModel.findAll({
       order: [['id', 'ASC']], // Ordena por la columna 'id' de manera ascendente (de menor a mayor)
     });
-    return allUsers;
+    return allRestaurants;
   } catch (error) {
     throw new Error('Error al obtener el usuario desde la base de datos');
   }
@@ -25,9 +25,7 @@ async function findAll() {
 
 async function searchByUser(userName) {
   try {
-    //console.log(userName);
     const users = await UserModel.findOne({where: {usuario:userName}});
-    //console.log(users);
     return users;
   } catch (error) {
     throw new Error('Error al obtener el usuario desde la base de datos');
