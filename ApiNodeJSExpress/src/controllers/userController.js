@@ -18,9 +18,9 @@ async function getUserById(req, res) {
 
 async function findAll(req, res) {
   try {
-    const allUsers = await UserService.findAll(); 
-    if (allUsers) {
-      return res.status(200).json(allUsers);
+    const allRestaurants = await UserService.findAll(); 
+    if (allRestaurants) {
+      return res.status(200).json(allRestaurants);
     } else {
       return res.status(404).json({ message: 'Ningún usuario ha sido encontrado' });
     }

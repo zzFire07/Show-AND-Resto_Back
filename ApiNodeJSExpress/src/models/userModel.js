@@ -14,26 +14,23 @@ UserModel.init(
     nombre: {
       type: DataTypes.STRING,
     },
-    usuario: {
+    ubicacion: {
       type: DataTypes.STRING,
     },
-    password: {
+    menu: {
       type: DataTypes.STRING,
     },
-    ciudad: {
-      type: DataTypes.STRING,
+    show: {
+      type: DataTypes.BOOLEAN,
     },
-    ci:{
+    detalle:{
       type: DataTypes.STRING,
-    },
-    fecha_nacimiento: {
-      type: DataTypes.DATE,
     },
   },
   {
     sequelize,
-    modelName: 'Usuarios', // Nombre del modelo
-    tableName: 'usuarios', // Nombre de la tabla en la base de datos
+    modelName: 'Restaurantes', // Nombre del modelo
+    tableName: 'restaurantes', // Nombre de la tabla en la base de datos
   }
 );
 
