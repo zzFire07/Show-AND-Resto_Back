@@ -18,8 +18,30 @@ async function deleteUser(userId) {
     // Devolvemos un mensaje indicando que se elimino de forma correcta
     return { message: 'Usuario eliminado correctamente' };
   } catch (error) {
-    // Si hay algún error devolvemos un mensaje de error detallado (500: error del servidor)
+    // Si hay algún error devolvemos un mensaje (500: error del servidor)
     throw new Error('Error al eliminar el usuario');
+  }
+}
+
+// Servicio para actualizar un usuario por su ID
+async function updateUser(userId, newData) {
+  try {
+    // Buscamos el usuario por su ID
+    const user = await UserModel.findByPk(userId);
+
+    // Si no existe el usuario, lanzamos un error indicando que no se pudo encontrar 
+    if (!user) {
+      throw new Error('Usuario no encontrado');
+    }
+
+    // Actualizamos los datos del usuario con los nuevos datos 
+    await user.update(newData);
+
+    // Devolvemos el usuario actualizado
+    return user;
+  } catch (error) {
+    // En caso de que no se haya realizado la operacion, lanzamos un error indicando que no se pudo actualizar el usuario
+    throw new Error('Error al actualizar el usuario');
   }
 }
 
@@ -47,6 +69,7 @@ async function findAllUser() {
 
 module.exports = {
   deleteUser,
+  updateUser,
   findByIdUser,
   findAllUser,
 };

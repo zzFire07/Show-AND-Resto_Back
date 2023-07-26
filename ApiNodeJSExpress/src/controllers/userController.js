@@ -17,6 +17,36 @@ async function deleteUser(req, res) {
   }
 }
 
+// Controlador para actualizar un usuario
+async function updateUser(req, res) {
+  const userId = req.params.userId;
+
+  try {
+    // Extraemos los datos que nos pasen (JSON)
+    const { nombre, apellido, ci, telefono, ciudad, pais, departamento } = req.body;
+
+    // Creamos un objeto con los datos actualizados del usuario
+    const newData = {
+      nombre,
+      apellido,
+      ci,
+      telefono,
+      ciudad,
+      pais,
+      departamento,
+    };
+
+    // Llamamos al servicio para actualizar el usuario en la base de datos
+    const updatedUser = await UserService.updateUser(userId, newData);
+
+    // Devolvemos una respuesta con estado 200 (éxito) y el usuario actualizado
+    return res.status(200).json(updatedUser);
+  } catch (error) {
+    // Si ocurre algún error devolvemos un mensaje (500: error del servidor) 
+    return res.status(500).json({ message: 'Error al actualizar el usuario', error: error.message });
+  }
+}
+
 // Controlador para obtener un usuario por su ID
 async function findByIdUser(req, res) {
   const userId = req.params.userId;
@@ -49,6 +79,7 @@ async function findAllUser(req, res) {
 
 module.exports = {
   deleteUser,
+  updateUser,
   findByIdUser,
   findAllUser,
 };
