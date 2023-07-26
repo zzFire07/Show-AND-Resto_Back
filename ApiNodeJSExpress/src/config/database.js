@@ -16,8 +16,6 @@ const sequelize = new Sequelize('postgres', 'postgres', 'enzotricolor3', {
 
 });
 
-
-
 // Realiza la conexión a la base de datos
 (async () => {
   try {
