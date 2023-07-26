@@ -5,11 +5,11 @@ const router = Router();
 const RestaurantController = require('../controllers/restaurantController');
 
 // Ruta para obtener un usuario por su ID
-router.get('/restaurant/findAll', RestaurantController.findAll);
-router.post('/createRestaurant', RestaurantController.createRestaurant);
-router.delete('/deleteRestaurant/:restaurantId', RestaurantController.deleteRestaurant);
-router.put('/updateRestaurant', RestaurantController.updateRestaurant);
-//router.get('/usuarios/:userName', UserController.searchByUser);
+router.post('/createRestaurant', RestaurantController.createRestaurant); //Especificar post en postman
+router.delete('/deleteRestaurant/:restaurantId', RestaurantController.deleteRestaurant); //Especificar delete en postman
+router.put('/updateRestaurant', RestaurantController.updateRestaurant); //Especificar put en postman
+router.get('/findAllRestaurant', RestaurantController.findAll);
+router.get('/findByIdRestaurant/:restaurantId', RestaurantController.findByIdRestaurant)
 
  
 module.exports = router;

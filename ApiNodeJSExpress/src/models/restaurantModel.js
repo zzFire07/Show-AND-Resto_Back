@@ -14,17 +14,17 @@ RestaurantModel.init(
     nombre: {
       type: DataTypes.STRING,
     },
-    ubicacion: {
+    direccion: {
       type: DataTypes.STRING,
     },
-    menu: {
+    ciudad: {
       type: DataTypes.STRING,
     },
-    show: {
-      type: DataTypes.BOOLEAN,
-    },
-    detalle:{
+    pais: {
       type: DataTypes.STRING,
+    },
+    capacidad:{
+      type: DataTypes.INTEGER,
     },
   },
   {

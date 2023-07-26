@@ -16,16 +16,16 @@ async function findAll() {
 
 async function createRestaurant(restaurantData) {
   try {
-    const { id, nombre, ubicacion, menu, show, detalle } = restaurantData;
+    const { id, nombre, direccion, ciudad, pais, capacidad } = restaurantData;
 
     // Crea el restaurante en la base de datos utilizando el modelo
     const newRestaurant = await RestaurantModel.create({
       id,
       nombre,
-      ubicacion,
-      menu,
-      show,
-      detalle,
+      direccion,
+      ciudad,
+      pais,
+      capacidad,
     });
 
     // Devuelve el restaurante creado
@@ -49,16 +49,17 @@ async function deleteRestaurant(restaurantId) {
 
 async function updateRestaurant(restaurantData) {
   try {
-    const { id, nombre, ubicacion, menu, show, detalle } = restaurantData;
+    const { id, nombre, direccion, ciudad, pais, capacidad } = restaurantData;
 
     // Crea el restaurante en la base de datos utilizando el modelo
-    const updatedRestaurant = await newRestaurant.update({
-      id,
+    const findRestaurant = await RestaurantModel.findByPk(id)
+        
+    const updatedRestaurant = await findRestaurant.update({
       nombre,
-      ubicacion,
-      menu,
-      show,
-      detalle,
+      direccion,
+      ciudad,
+      pais,
+      capacidad,
     });
 
     // Devuelve el restaurante creado
@@ -68,6 +69,14 @@ async function updateRestaurant(restaurantData) {
   }
 }
 
+async function findByIdRestaurant(restaurantId) {
+  try {
+    const findRestaurant = await RestaurantModel.findByPk(restaurantId); 
+    return findRestaurant;
+  } catch (error) {
+    throw new Error('Error al obtener el usuario desde la base de datos');
+  }
+}
 
 
 module.exports = {
@@ -75,4 +84,5 @@ module.exports = {
   createRestaurant,
   deleteRestaurant,
   updateRestaurant,
+  findByIdRestaurant,
 };

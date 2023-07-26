@@ -17,20 +17,23 @@ async function findAll(req, res) {
 
 async function createRestaurant(req, res) {
   try {
-    const { id, nombre, ubicacion, menu, show, detalle } = req.body;
+    const { id, nombre, direccion, ciudad, pais, capacidad } = req.body;
 
     // Llama al servicio para crear el restaurante
     const newRestaurant = await RestaurantService.createRestaurant({
       id,
       nombre,
-      ubicacion,
-      menu,
-      show,
-      detalle,
+      direccion,
+      ciudad,
+      pais,
+      capacidad,
     });
 
-    // Devuelve el restaurante creado como respuesta
-    res.json(newRestaurant);
+    if (newRestaurant) {
+      return res.status(200).json("El restaurante ha sido creado");
+    } else {
+      return res.status(404).json({ message: 'Ya existe un restaurante con esos parámetros' });
+    }
   } catch (error) {
     res.status(500).json({ error: 'Error al crear el restaurante.', error: error.message });
   }
@@ -47,7 +50,7 @@ async function deleteRestaurant(req, res) {
     if (deletedRestaurant) {
       return res.status(200).json("El restaurante ha sido eliminado exitosamente");
     } else {
-      return res.status(404).json({ message: 'Ningún restaurante ha sido encontrado con ese id' });
+      return res.status(404).json({ message: 'Ningún restaurante ha sido encontrado con ese id para eliminarlo' });
     }
   } catch (error) {
     res.status(500).json({ error: 'Error al eliminar el restaurante', error: error.message });
@@ -56,25 +59,41 @@ async function deleteRestaurant(req, res) {
 
 async function updateRestaurant(req, res) {
   try {
-    const { id, nombre, ubicacion, menu, show, detalle } = req.body;
+    const { id, nombre, direccion, ciudad, pais, capacidad } = req.body;
 
     // Llama al servicio para crear el restaurante
     const updatedRestaurant = await RestaurantService.updateRestaurant({
       id,
       nombre,
-      ubicacion,
-      menu,
-      show,
-      detalle,
+      direccion,
+      ciudad,
+      pais,
+      capacidad,
     });
 
     if (updatedRestaurant) {
-      return res.status(200).json("El restaurante ha sido actualizado exitosamente");
+      return res.status(200).json(updatedRestaurant);
+    } else {
+      return res.status(404).json({ message: 'Ningún restaurante ha sido encontrado con ese id para actualizarlo' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Error al actualizar el restaurante.', error: error.message });
+  }
+}
+
+async function findByIdRestaurant(req, res) {
+  const restaurantId = req.params.restaurantId;
+  try {
+    // Llama al servicio para crear el restaurante
+    const findRestaurant = await RestaurantService.findByIdRestaurant(restaurantId);
+    
+    if (findRestaurant) {
+      return res.status(200).json(findRestaurant);
     } else {
       return res.status(404).json({ message: 'Ningún restaurante ha sido encontrado con ese id' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Error al actualizar el restaurante.', error: error.message });
+    res.status(500).json({ error: 'Error al encontrar el restaurante', error: error.message });
   }
 }
 
@@ -83,4 +102,5 @@ module.exports = {
   createRestaurant,
   deleteRestaurant,
   updateRestaurant,
+  findByIdRestaurant,
 };
