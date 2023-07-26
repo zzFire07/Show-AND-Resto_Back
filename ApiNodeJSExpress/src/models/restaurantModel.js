@@ -1,9 +1,9 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/database.js');
 
-class UserModel extends Model {}
+class RestaurantModel extends Model {}
 
-UserModel.init(
+RestaurantModel.init(
   {
     // Define las propiedades de tu modelo de usuario aquí
     id: {
@@ -29,12 +29,12 @@ UserModel.init(
   },
   {
     sequelize,
-    modelName: 'Restaurantes', // Nombre del modelo
-    tableName: 'restaurantes', // Nombre de la tabla en la base de datos
+    modelName: 'Restaurant', // Nombre del modelo
+    tableName: 'restaurant', // Nombre de la tabla en la base de datos
   }
 );
 
 
 
-module.exports = UserModel;
+module.exports = RestaurantModel;
 

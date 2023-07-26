@@ -14,7 +14,7 @@ app.use(express.json());
  
 
 //Routes
-app.use(require('./routes/userRoutes.js')); 
+app.use(require('./routes/restaurantRoutes.js')); 
 
 //Iniciando el servidor
 app.listen(app.get('port'),()=>{
