@@ -1,6 +1,28 @@
 const { or } = require('sequelize');
 const UserModel = require('../models/userModel.js');
 
+// Servicio para eliminar un usuario por su ID
+async function deleteUser(userId) {
+  try {
+    // Buscamos el usuario por su ID
+    const user = await UserModel.findByPk(userId);
+
+    // Si el usuario no existe, lanzamos un error indicando que no se encontró el usuario
+    if (!user) {
+      throw new Error('Usuario no encontrado');
+    }
+
+    // De lo contrario, eliminamos el usuario de la base de datos
+    await user.destroy();
+
+    // Devolvemos un mensaje indicando que se elimino de forma correcta
+    return { message: 'Usuario eliminado correctamente' };
+  } catch (error) {
+    // Si hay algún error devolvemos un mensaje de error detallado (500: error del servidor)
+    throw new Error('Error al eliminar el usuario');
+  }
+}
+
 // Servicio para obtener un usuario por su ID
 async function findByIdUser(userId) {
   try {
@@ -24,6 +46,7 @@ async function findAllUser() {
 }
 
 module.exports = {
+  deleteUser,
   findByIdUser,
   findAllUser,
 };
