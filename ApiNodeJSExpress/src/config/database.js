@@ -16,8 +16,6 @@ const sequelize = new Sequelize('postgres', 'postgres', 'admin', {
 
 });
 
-
-
 // Realiza la conexión a la base de datos
 (async () => {
   try {

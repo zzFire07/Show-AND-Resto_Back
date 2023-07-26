@@ -5,7 +5,7 @@ class UserModel extends Model {}
 
 UserModel.init(
   {
-    // Define las propiedades de tu modelo de usuario aquí
+    // Propiedades del usuario
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,27 +14,32 @@ UserModel.init(
     nombre: {
       type: DataTypes.STRING,
     },
-    ubicacion: {
+    apellido: {
       type: DataTypes.STRING,
     },
-    menu: {
+    ci: {
+      type: DataTypes.INTEGER,
+    },
+    telefono: {
       type: DataTypes.STRING,
     },
-    show: {
-      type: DataTypes.BOOLEAN,
+    ciudad:{
+      type: DataTypes.STRING,
     },
-    detalle:{
+    pais: {
+      type: DataTypes.STRING,
+    },
+    departamento: {
       type: DataTypes.STRING,
     },
   },
   {
     sequelize,
-    modelName: 'Restaurantes', // Nombre del modelo
-    tableName: 'restaurantes', // Nombre de la tabla en la base de datos
+    modelName: 'Usuarios', // Nombre del modelo
+    tableName: 'usuarios', // Nombre de la tabla en la base de datos
   }
 );
 
 
 
 module.exports = UserModel;
-

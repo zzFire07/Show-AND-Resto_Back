@@ -15,9 +15,9 @@ router.get('/', (req, res) => {
 const UserController = require('../controllers/userController');
 
 // Ruta para obtener un usuario por su ID
-router.get('/users/:userId', UserController.getUserById);
-router.get('/restaurant/findall', UserController.findAll);
-router.get('/usuarios/:userName', UserController.searchByUser);
+router.get('/users/findByIdUser/:userId', UserController.findByIdUser);
+router.get('/users/findAllUser', UserController.findAllUser);
 
- 
+
+
 module.exports = router;
