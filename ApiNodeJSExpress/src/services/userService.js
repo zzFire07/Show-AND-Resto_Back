@@ -1,6 +1,21 @@
 const { or } = require('sequelize');
 const UserModel = require('../models/userModel.js');
 
+
+// Servicio para crear un nuevo usuario
+async function createUser(userData) {
+  try {
+    // Creamos un nuevo usuario en la base de datos usando el modelo UserModel
+    const newUser = await UserModel.create(userData);
+
+    // Devolvemos el usuario recién creado
+    return newUser;
+  } catch (error) {
+    // Si ocurre algún error, lanzamos un error indicando que no se pudo crear el usuario
+    throw new Error('Error al crear el usuario');
+  }
+}
+
 // Servicio para eliminar un usuario por su ID
 async function deleteUser(userId) {
   try {
@@ -68,6 +83,7 @@ async function findAllUser() {
 }
 
 module.exports = {
+  createUser,
   deleteUser,
   updateUser,
   findByIdUser,
