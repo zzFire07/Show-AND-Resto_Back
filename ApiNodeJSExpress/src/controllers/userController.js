@@ -3,11 +3,10 @@ const UserService = require('../services/userService.js');
 // Controlador para crear un nuevo usuario
 async function createUser(req, res) {
   try {
-    // Extraemos los datos del nuevo usuario (JSON)
-    const { nombre, apellido, ci, telefono, ciudad, pais, departamento } = req.body;
+    const {nombre, apellido, ci, telefono, ciudad, pais, departamento } = req.body;
 
-    // Creamos un objeto con los datos del nuevo usuario
-    const newUser = {
+    // Llama al servicio para crear el usuario
+    const newUser = await UserService.createUser({
       nombre,
       apellido,
       ci,
@@ -15,19 +14,17 @@ async function createUser(req, res) {
       ciudad,
       pais,
       departamento,
-    };
+    });
 
-    // Llamamos al servicio para crear el nuevo usuario en la base de datos
-    const createdUser = await UserService.createUser(newUser);
-
-    // Devolvemos una respuesta (200 = OK) y el usuario recién creado (JSON)
-    return res.status(200).json(createdUser);
+    if (newUser) {
+      return res.status(200).json(newUser);
+    } else {
+      return res.status(404).json({ message: 'Ya existe un usuario con esos parámetros' });
+    }
   } catch (error) {
-    // Si ocurre algún error, devolvemos una respuesta con estado 500 y un mensaje de error
-    return res.status(500).json({ message: 'Error al crear el usuario', error: error.message });
+    res.status(500).json({ error: 'Error al crear el usuario.', error: error.message });
   }
 }
-
 
 // Controlador para eliminar un usuario por su id
 async function deleteUser(req, res) {
