@@ -4,11 +4,10 @@ const UserService = require('../services/userService.js');
 async function createUser(req, res) {
   try {
     // Extraemos los datos del nuevo usuario (JSON)
-    const { id, nombre, apellido, ci, telefono, ciudad, pais, departamento } = req.body;
+    const { nombre, apellido, ci, telefono, ciudad, pais, departamento } = req.body;
 
     // Creamos un objeto con los datos del nuevo usuario
     const newUser = {
-      id,
       nombre,
       apellido,
       ci,
