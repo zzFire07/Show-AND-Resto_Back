@@ -14,13 +14,21 @@ async function findAll() {
   }
 }
 
-async function createRestaurant(restaurantData) {
+async function createRestaurant(data) {
   try {
-    const { id, nombre, direccion, ciudad, pais, capacidad } = restaurantData;
+    // Consulta para obtener el último ID en la tabla de restaurantes
+    const lastRestaurant = await RestaurantModel.findOne({
+      order: [['id', 'DESC']],
+    });
 
-    // Crea el restaurante en la base de datos utilizando el modelo
+    // Calcula el nuevo ID para el restaurante
+    const newId = lastRestaurant.id + 1; //como funciona esto?  
+
+    const { nombre, direccion, ciudad, pais, capacidad } = data;
+
+    // Crea el restaurante en la base de datos utilizando el modelo y el nuevo ID
     const newRestaurant = await RestaurantModel.create({
-      id,
+      id: newId,
       nombre,
       direccion,
       ciudad,

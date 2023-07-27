@@ -6,7 +6,19 @@ const UserModel = require('../models/userModel.js');
 async function createUser(userData) {
   try {
     // Creamos un nuevo usuario en la base de datos usando el modelo UserModel
-    const newUser = await UserModel.create(userData);
+
+    //const user = await UserModel.findByPk(userId);
+
+    const lastUser = await UserModel.findOne({
+      order: [['id', 'DESC']],
+    });
+
+    const newId = lastUser.id + 1;
+
+    const newUser = await UserModel.create({
+      id:newId,
+      userData,
+    });
 
     // Devolvemos el usuario recién creado
     return newUser;
