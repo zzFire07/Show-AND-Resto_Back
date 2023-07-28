@@ -13,7 +13,7 @@ FoodTypeModel.init(
   {
     sequelize,
     modelName: 'FoodType', // Nombre del modelo
-    tableName: 'foodtype', // Nombre de la tabla en la base de datos
+    tableName: 'foodType', // Nombre de la tabla en la base de datos
   }
 );
 
