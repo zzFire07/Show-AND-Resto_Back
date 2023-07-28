@@ -22,4 +22,4 @@ ShowModel.init(
 
 
 
-module.exports = UserModel;
+module.exports = ShowModel;

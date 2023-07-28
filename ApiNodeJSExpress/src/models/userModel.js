@@ -30,8 +30,8 @@ UserModel.init(
   },
   {
     sequelize,
-    modelName: 'Usuarios', // Nombre del modelo
-    tableName: 'usuarios', // Nombre de la tabla en la base de datos
+    modelName: 'User', // Nombre del modelo
+    tableName: 'user', // Nombre de la tabla en la base de datos
   }
 );
 

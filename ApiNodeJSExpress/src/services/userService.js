@@ -5,14 +5,7 @@ const UserModel = require('../models/userModel.js');
 // Servicio para crear un nuevo usuario
 async function createUser(data) {
   try {
-    // Consulta para obtener el último ID en la tabla de UserModeles
-    const lastUser = await UserModel.findOne({
-      order: [['id', 'DESC']],
-    });
-
-    // Calcula el nuevo ID para el UserModele
-    const newId = lastUser.id + 1;  
-
+    
     const { nombre, apellido, ci, telefono, ciudad, pais, departamento } = data;
 
     // Crea el UserModele en la base de datos utilizando el modelo y el nuevo ID
