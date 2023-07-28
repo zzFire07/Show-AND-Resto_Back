@@ -6,11 +6,6 @@ class ShowModel extends Model {}
 ShowModel.init(
   {
     // Propiedades del show
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     nombre: {
       type: DataTypes.STRING,
     },
@@ -27,4 +22,4 @@ ShowModel.init(
 
 
 
-module.exports = UserModel;
+module.exports = ShowModel;
