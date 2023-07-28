@@ -17,18 +17,11 @@ async function findAll() {
 async function createRestaurant(data) {
   try {
     // Consulta para obtener el último ID en la tabla de restaurantes
-    const lastRestaurant = await RestaurantModel.findOne({
-      order: [['id', 'DESC']],
-    });
-
-    // Calcula el nuevo ID para el restaurante
-    const newId = lastRestaurant.id + 1; //como funciona esto?  
 
     const { nombre, direccion, ciudad, pais, capacidad } = data;
 
     // Crea el restaurante en la base de datos utilizando el modelo y el nuevo ID
     const newRestaurant = await RestaurantModel.create({
-      id: newId,
       nombre,
       direccion,
       ciudad,
@@ -55,12 +48,12 @@ async function deleteRestaurant(restaurantId) {
   }
 }
 
-async function updateRestaurant(restaurantData) {
+async function updateRestaurant(restaurantId,data) {
   try {
-    const { id, nombre, direccion, ciudad, pais, capacidad } = restaurantData;
+    const { nombre, direccion, ciudad, pais, capacidad } = data;
 
     // Crea el restaurante en la base de datos utilizando el modelo
-    const findRestaurant = await RestaurantModel.findByPk(id)
+    const findRestaurant = await RestaurantModel.findByPk(restaurantId)
         
     const updatedRestaurant = await findRestaurant.update({
       nombre,
@@ -82,7 +75,7 @@ async function findByIdRestaurant(restaurantId) {
     const findRestaurant = await RestaurantModel.findByPk(restaurantId); 
     return findRestaurant;
   } catch (error) {
-    throw new Error('Error al obtener el usuario desde la base de datos');
+    throw new Error('Error al obtener el restaurante desde la base de datos');
   }
 }
 

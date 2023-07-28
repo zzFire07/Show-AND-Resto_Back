@@ -5,12 +5,7 @@ class RestaurantModel extends Model {}
 
 RestaurantModel.init(
   {
-    // Define las propiedades de tu modelo de usuario aquí
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
+    // Atributos del restaurante
     nombre: {
       type: DataTypes.STRING,
     },

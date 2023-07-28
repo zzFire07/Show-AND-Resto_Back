@@ -57,12 +57,12 @@ async function deleteRestaurant(req, res) {
 }
 
 async function updateRestaurant(req, res) {
+  const restaurantId = req.params.restaurantId;
   try {
-    const { id, nombre, direccion, ciudad, pais, capacidad } = req.body;
+    const { nombre, direccion, ciudad, pais, capacidad } = req.body;
 
     // Llama al servicio para crear el restaurante
-    const updatedRestaurant = await RestaurantService.updateRestaurant({
-      id,
+    const updatedRestaurant = await RestaurantService.updateRestaurant(restaurantId,{
       nombre,
       direccion,
       ciudad,
