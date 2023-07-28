@@ -75,7 +75,7 @@ async function findByIdRestaurant(restaurantId) {
     const findRestaurant = await RestaurantModel.findByPk(restaurantId); 
     return findRestaurant;
   } catch (error) {
-    throw new Error('Error al obtener el usuario desde la base de datos');
+    throw new Error('Error al obtener el restaurante desde la base de datos');
   }
 }
 

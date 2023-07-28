@@ -1,4 +1,4 @@
-const FoodTypeService = require('../services/foodTypeService');
+const FoodTypeService = require('../services/foodTypeService.js');
 
 // Controlador para obtener un usuario por su ID
 
@@ -17,9 +17,9 @@ async function findAll(req, res) {
 
 async function createFoodType(req, res) {
   try {
-    const { nombre } = req.body;
+    const {nombre} = req.body;
 
-    // Llama al servicio para crear el restaurante
+    // Llama al servicio para crear el tipo de comida
     const newFoodType = await FoodTypeService.createFoodType({
       nombre,
     });
@@ -30,16 +30,16 @@ async function createFoodType(req, res) {
       return res.status(404).json({ message: 'Ya existe un tipo de comida con esos parámetros' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Error al crear el tipo de comida.', error: error.message });
+    res.status(500).json({ error: 'Error al crear el tipo de comida', error: error.message });
   }
 }
 
 
 async function deleteFoodType(req, res) {
-    const foodTypeId = req.params.foodTypeId;
-    try {
+  const foodTypeId = req.params.foodTypeId;
+  try {
     
-    // Llama al servicio para crear el restaurante
+    // Llama al servicio para eliminar el tipo de comida
     const deletedFoodType = await FoodTypeService.deleteFoodType(foodTypeId);
     
     if (deletedFoodType) {
@@ -48,35 +48,33 @@ async function deleteFoodType(req, res) {
       return res.status(404).json({ message: 'Ningún tipo de comida ha sido encontrado con ese id para eliminarlo' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Error al eliminar el restaurante', error: error.message });
+    res.status(500).json({ error: 'Error al eliminar el tipo de comida', error: error.message });
   }
 }
 
 async function updateFoodType(req, res) {
-    //const foodTypeId = req.params.foodTypeId;
-    try {
-        const { nombre } = req.body;
+  const foodTypeId = req.params.foodTypeId;
+  try {
+    const { nombre } = req.body;
 
-        // Llama al servicio para crear el restaurante
-        const updatedFoodType = await FoodTypeService.updateFoodType(//foodTypeId, 
-          {
-        nombre,
-        });
+    // Llama al servicio para actualizar el restaurante
+    const updatedFoodType = await FoodTypeService.updateFoodType(foodTypeId,{
+      nombre,
+    });
 
-        if (updatedFoodType) {
-        return res.status(200).json(updatedFoodType);
-        } else {
-        return res.status(404).json({ message: 'Ningún tipo de comida ha sido encontrado con ese id para actualizarlo' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: 'Error al actualizar el tipo de comida.', error: error.message });
+    if (updatedFoodType) {
+      return res.status(200).json(updatedFoodType);
+    } else {
+      return res.status(404).json({ message: 'Ningún tipo de comida ha sido encontrado con ese id para actualizarlo' });
     }
+  } catch (error) {
+    res.status(500).json({ error: 'Error al actualizar el tipo de comida', error: error.message });
+  }
 }
 
 async function findByIdFoodType(req, res) {
   const foodTypeId = req.params.foodTypeId;
   try {
-    // Llama al servicio para crear el restaurante
     const findFoodType = await FoodTypeService.findByIdFoodType(foodTypeId);
     
     if (findFoodType) {

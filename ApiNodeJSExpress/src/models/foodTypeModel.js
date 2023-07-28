@@ -5,7 +5,7 @@ class FoodTypeModel extends Model {}
 
 FoodTypeModel.init(
   {
-    // Define las propiedades de tu modelo de usuario aquí
+    // Atributos del restaurante
     nombre: {
       type: DataTypes.STRING,
     },
@@ -13,10 +13,11 @@ FoodTypeModel.init(
   {
     sequelize,
     modelName: 'FoodType', // Nombre del modelo
-    tableName: 'foodType', // Nombre de la tabla en la base de datos
+    tableName: 'foodtype', // Nombre de la tabla en la base de datos
   }
 );
 
 
 
 module.exports = FoodTypeModel;
+

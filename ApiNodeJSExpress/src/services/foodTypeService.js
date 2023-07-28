@@ -16,13 +16,14 @@ async function findAll() {
 
 async function createFoodType(data) {
   try {
-
     const { nombre } = data;
 
-    // Crea el tipo de comida en la base de datos utilizando el modelo y el nuevo ID
+    // Crea el restaurante en la base de datos utilizando el modelo y el nuevo ID
     const newFoodType = await FoodTypeModel.create({
       nombre,
     });
+
+    // Devuelve el restaurante creado
     return newFoodType;
   } catch (error) {
     throw new Error('Error al crear el tipo de comida desde el JSON');
@@ -31,7 +32,6 @@ async function createFoodType(data) {
 
 async function deleteFoodType(foodTypeId) {
   try {
-    // Crea el restaurante en la base de datos utilizando el modelo
     const deletedFoodType = await FoodTypeModel.destroy( {where:{id:foodTypeId}} )
 
     // Devuelve el restaurante creado
@@ -45,30 +45,26 @@ async function updateFoodType(foodTypeId,data) {
   try {
     const { nombre } = data;
 
-    // Crea el restaurante en la base de datos utilizando el modelo
     const findFoodType = await FoodTypeModel.findByPk(foodTypeId)
         
     const updatedFoodType = await findFoodType.update({
       nombre,
-      direccion,
-      ciudad,
-      pais,
-      capacidad,
     });
 
     // Devuelve el restaurante creado
     return updatedFoodType;
   } catch (error) {
-    throw new Error('Error al modificar el restaurante desde el JSON');
+    throw new Error('Error al modificar el tipo de comida desde el JSON');
   }
 }
 
 async function findByIdFoodType(foodTypeId) {
   try {
     const findFoodType = await FoodTypeModel.findByPk(foodTypeId); 
+    
     return findFoodType;
   } catch (error) {
-    throw new Error('Error al obtener el usuario desde la base de datos');
+    throw new Error('Error al obtener el tipo de comida desde la base de datos');
   }
 }
 
