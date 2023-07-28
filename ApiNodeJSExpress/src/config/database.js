@@ -13,6 +13,7 @@ const sequelize = new Sequelize('postgres', 'postgres', 'admin', {
     // Evita que Sequelize modifique el nombre de las columnas a camelCase
     underscored: true,  
   },
+  omitNull: true
 
 });
 
