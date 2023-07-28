@@ -1,4 +1,4 @@
-const RestaurantService = require('../services/restaurantService.js');
+/* const RestaurantService = require('../services/restaurantService.js');
 
 // Controlador para obtener un usuario por su ID
 
@@ -57,12 +57,12 @@ async function deleteRestaurant(req, res) {
 }
 
 async function updateRestaurant(req, res) {
-  const restaurantId = req.params.restaurantId;
   try {
-    const { nombre, direccion, ciudad, pais, capacidad } = req.body;
+    const { id, nombre, direccion, ciudad, pais, capacidad } = req.body;
 
     // Llama al servicio para crear el restaurante
-    const updatedRestaurant = await RestaurantService.updateRestaurant(restaurantId,{
+    const updatedRestaurant = await RestaurantService.updateRestaurant({
+      id,
       nombre,
       direccion,
       ciudad,
@@ -103,3 +103,4 @@ module.exports = {
   updateRestaurant,
   findByIdRestaurant,
 };
+ */

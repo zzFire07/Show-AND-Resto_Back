@@ -1,11 +1,11 @@
-const { DataTypes, Model } = require('sequelize');
+/* const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/database.js');
 
-class RestaurantModel extends Model {}
+class FoodModel extends Model {}
 
-RestaurantModel.init(
+FoodModel.init(
   {
-    // Atributos del restaurante
+    // Define las propiedades de tu modelo de usuario aquí
     nombre: {
       type: DataTypes.STRING,
     },
@@ -31,5 +31,4 @@ RestaurantModel.init(
 
 
 
-module.exports = RestaurantModel;
-
+module.exports = RestaurantModel; */

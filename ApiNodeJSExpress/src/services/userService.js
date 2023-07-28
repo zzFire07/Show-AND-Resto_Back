@@ -11,13 +11,12 @@ async function createUser(data) {
     });
 
     // Calcula el nuevo ID para el UserModele
-    const newId = lastUser.id + 1; //como funciona esto?  
+    const newId = lastUser.id + 1;  
 
     const { nombre, apellido, ci, telefono, ciudad, pais, departamento } = data;
 
     // Crea el UserModele en la base de datos utilizando el modelo y el nuevo ID
     const newUser = await UserModel.create({
-      id: newId,
       nombre,
       apellido,
       ci,
