@@ -19,5 +19,5 @@ DrinkTypeModel.init(
 
 
 
-module.exports = FoodTypeModel;
+module.exports = DrinkTypeModel;
 
