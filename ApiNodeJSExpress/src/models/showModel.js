@@ -6,16 +6,16 @@ class ShowModel extends Model {}
 ShowModel.init(
   {
     // Propiedades del show
-    nombre: {
+    name: {
       type: DataTypes.STRING,
     },
-    ubicacion: {
+    location: {
       type: DataTypes.STRING,
     },
     link:{
       type:DataTypes.STRING,
     },
-    imagen:{
+    image:{
       type: DataTypes.STRING,
     }
   },
