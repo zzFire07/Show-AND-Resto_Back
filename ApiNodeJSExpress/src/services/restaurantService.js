@@ -18,16 +18,14 @@ async function createRestaurant(data) {
   try {
     // Consulta para obtener el último ID en la tabla de restaurantes
 
-    const { nombre, direccion, ciudad, pais, capacidad, imageurl } = data;
+    const { name, location, link, image } = data;
 
     // Crea el restaurante en la base de datos utilizando el modelo y el nuevo ID
     const newRestaurant = await RestaurantModel.create({
-      nombre,
-      direccion,
-      ciudad,
-      pais,
-      capacidad,
-      imageurl
+      name,
+      location,
+      link,
+      image
     });
 
     // Devuelve el restaurante creado
@@ -51,18 +49,16 @@ async function deleteRestaurant(restaurantId) {
 
 async function updateRestaurant(restaurantId,data) {
   try {
-    const { nombre, direccion, ciudad, pais, capacidad, imageurl } = data;
+    const { name, location, link, image } = data;
 
     // Crea el restaurante en la base de datos utilizando el modelo
     const findRestaurant = await RestaurantModel.findByPk(restaurantId)
         
     const updatedRestaurant = await findRestaurant.update({
-      nombre,
-      direccion,
-      ciudad,
-      pais,
-      capacidad,
-      imageurl
+      name,
+      location,
+      link,
+      image
     });
 
     // Devuelve el restaurante creado
