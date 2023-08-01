@@ -9,10 +9,13 @@ ShowModel.init(
     nombre: {
       type: DataTypes.STRING,
     },
-    fecha: {
-      type: DataTypes.DATE,
+    ubicacion: {
+      type: DataTypes.STRING,
     },
-    imageurl: {
+    link:{
+      type:DataTypes.STRING,
+    },
+    imagen:{
       type: DataTypes.STRING,
     }
   },

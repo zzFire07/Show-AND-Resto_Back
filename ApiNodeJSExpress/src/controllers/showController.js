@@ -17,13 +17,14 @@ async function findAllShow(req, res) {
 
 async function createShow(req, res) {
   try {
-    const {nombre, fecha, imageurl } = req.body;
+    const { nombre, ubicacion, link, imagen } = req.body;
 
     // Llama al servicio para crear el show
     const newShow = await ShowService.createShow({
       nombre,
-      fecha,
-      imageurl
+      ubicacion,
+      link,
+      imagen,
     });
 
     if (newShow) {
