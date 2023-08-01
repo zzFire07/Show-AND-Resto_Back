@@ -6,12 +6,13 @@ const ShowModel = require('../models/showModel.js');
 async function createShow(data) {
   try {
 
-    const { nombre, fecha } = data;
+    const { nombre, fecha, imageurl } = data;
 
     // Crea el show en la base de datos utilizando el modelo y el nuevo ID
     const newShow = await ShowModel.create({
       nombre,
       fecha,
+      imageurl
     });
 
     // Devuelve el show creado
@@ -58,7 +59,7 @@ async function updateShow(showId, newData) {
     await show.update(newData);
 
     // Devolvemos el show actualizado
-    return show;
+    return show;ñ
   } catch (error) {
     // En caso de que no se haya realizado la operacion, lanzamos un error indicando que no se pudo actualizar
     throw new Error('Error al actualizar el show');

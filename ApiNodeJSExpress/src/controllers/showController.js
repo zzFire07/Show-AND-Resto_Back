@@ -17,12 +17,13 @@ async function findAllShow(req, res) {
 
 async function createShow(req, res) {
   try {
-    const {nombre, fecha } = req.body;
+    const {nombre, fecha, imageurl } = req.body;
 
     // Llama al servicio para crear el show
     const newShow = await ShowService.createShow({
       nombre,
       fecha,
+      imageurl
     });
 
     if (newShow) {
@@ -58,12 +59,13 @@ async function updateShow(req, res) {
   
     try {
       // Extraemos los datos que nos pasen (JSON)
-      const { nombre, fecha } = req.body;
+      const { nombre, fecha, imageurl } = req.body;
   
       // Creamos un objeto con los datos actualizados
       const newData = {
         nombre,
         fecha,
+        imageurl
       };
   
       // Llamamos al servicio para actualizar el show en la base de datos

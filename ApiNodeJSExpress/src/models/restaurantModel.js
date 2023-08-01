@@ -21,6 +21,9 @@ RestaurantModel.init(
     capacidad:{
       type: DataTypes.INTEGER,
     },
+    imageurl:{
+      type: DataTypes.STRING,
+    }
   },
   {
     sequelize,
