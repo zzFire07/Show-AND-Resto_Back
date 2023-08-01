@@ -17,7 +17,7 @@ async function findAll(req, res) {
 
 async function createRestaurant(req, res) {
   try {
-    const {nombre, direccion, ciudad, pais, capacidad } = req.body;
+    const {nombre, direccion, ciudad, pais, capacidad, imageurl } = req.body;
 
     // Llama al servicio para crear el restaurante
     const newRestaurant = await RestaurantService.createRestaurant({
@@ -26,7 +26,9 @@ async function createRestaurant(req, res) {
       ciudad,
       pais,
       capacidad,
+      imageurl
     });
+
 
     if (newRestaurant) {
       return res.status(200).json(newRestaurant);
@@ -59,7 +61,7 @@ async function deleteRestaurant(req, res) {
 async function updateRestaurant(req, res) {
   const restaurantId = req.params.restaurantId;
   try {
-    const { nombre, direccion, ciudad, pais, capacidad } = req.body;
+    const { nombre, direccion, ciudad, pais, capacidad, imageurl } = req.body;
 
     // Llama al servicio para crear el restaurante
     const updatedRestaurant = await RestaurantService.updateRestaurant(restaurantId,{
@@ -68,6 +70,7 @@ async function updateRestaurant(req, res) {
       ciudad,
       pais,
       capacidad,
+      imageurl
     });
 
     if (updatedRestaurant) {

@@ -12,6 +12,9 @@ ShowModel.init(
     fecha: {
       type: DataTypes.DATE,
     },
+    imageurl: {
+      type: DataTypes.STRING,
+    }
   },
   {
     sequelize,
