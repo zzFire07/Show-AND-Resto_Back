@@ -59,7 +59,7 @@ async function updateShow(showId, newData) {
     await show.update(newData);
 
     // Devolvemos el show actualizado
-    return show;ñ
+    return show;
   } catch (error) {
     // En caso de que no se haya realizado la operacion, lanzamos un error indicando que no se pudo actualizar
     throw new Error('Error al actualizar el show');
