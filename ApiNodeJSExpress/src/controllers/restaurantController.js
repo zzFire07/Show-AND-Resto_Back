@@ -17,16 +17,14 @@ async function findAll(req, res) {
 
 async function createRestaurant(req, res) {
   try {
-    const {nombre, direccion, ciudad, pais, capacidad, imageurl } = req.body;
+    const { name, location, link, image } = req.body;
 
     // Llama al servicio para crear el restaurante
     const newRestaurant = await RestaurantService.createRestaurant({
-      nombre,
-      direccion,
-      ciudad,
-      pais,
-      capacidad,
-      imageurl
+      name,
+      location,
+      link,
+      image
     });
 
 
@@ -61,16 +59,14 @@ async function deleteRestaurant(req, res) {
 async function updateRestaurant(req, res) {
   const restaurantId = req.params.restaurantId;
   try {
-    const { nombre, direccion, ciudad, pais, capacidad, imageurl } = req.body;
+    const { name, location, link, image } = req.body;
 
     // Llama al servicio para crear el restaurante
     const updatedRestaurant = await RestaurantService.updateRestaurant(restaurantId,{
-      nombre,
-      direccion,
-      ciudad,
-      pais,
-      capacidad,
-      imageurl
+      name,
+      location,
+      link,
+      image
     });
 
     if (updatedRestaurant) {

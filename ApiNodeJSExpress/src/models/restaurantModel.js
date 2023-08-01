@@ -6,22 +6,16 @@ class RestaurantModel extends Model {}
 RestaurantModel.init(
   {
     // Atributos del restaurante
-    nombre: {
+    name: {
       type: DataTypes.STRING,
     },
-    direccion: {
+    location: {
       type: DataTypes.STRING,
     },
-    ciudad: {
+    link: {
       type: DataTypes.STRING,
     },
-    pais: {
-      type: DataTypes.STRING,
-    },
-    capacidad:{
-      type: DataTypes.INTEGER,
-    },
-    imageurl:{
+    image: {
       type: DataTypes.STRING,
     }
   },
