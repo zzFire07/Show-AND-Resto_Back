@@ -3,6 +3,7 @@ const RestaurantService = require('../services/restaurantService.js');
 // Controlador para obtener un usuario por su ID
 
 async function findAll(req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
   try {
     const allRestaurants = await RestaurantService.findAll(); 
     if (allRestaurants) {

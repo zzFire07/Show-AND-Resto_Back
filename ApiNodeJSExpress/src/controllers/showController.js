@@ -3,6 +3,7 @@ const ShowService = require('../services/showService.js');
 // Controlador para obtener un show por su ID
 
 async function findAllShow(req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
   try {
     const allShows = await ShowService.findAllShow(); 
     if (allShows) {
