@@ -3,7 +3,6 @@ const ShowService = require('../services/showService.js');
 // Controlador para obtener un show por su ID
 
 async function findAllShow(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
   try {
     const allShows = await ShowService.findAllShow(); 
     if (allShows) {
@@ -18,14 +17,15 @@ async function findAllShow(req, res) {
 
 async function createShow(req, res) {
   try {
-    const { name, location, link, image } = req.body;
+    const { name, location, weblink, image } = req.body;
 
     // Llama al servicio para crear el show
     const newShow = await ShowService.createShow({
       name,
       location,
-      link,
+      weblink,
       image,
+      id_departamento
     });
 
     if (newShow) {
@@ -61,13 +61,15 @@ async function updateShow(req, res) {
   
     try {
       // Extraemos los datos que nos pasen (JSON)
-      const { nombre, fecha, imageurl } = req.body;
+      const { nombre, fecha, weblink, image, id_departamento} = req.body;
   
       // Creamos un objeto con los datos actualizados
       const newData = {
         nombre,
         fecha,
-        imageurl
+        weblink,
+        image,
+        id_departamento
       };
   
       // Llamamos al servicio para actualizar el show en la base de datos

@@ -1,7 +1,7 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/database.js');
 
-class RestaurantModel extends Model {}
+class RestauranteModel extends Model {}
 
 RestaurantModel.init(
   {
@@ -12,7 +12,7 @@ RestaurantModel.init(
     location: {
       type: DataTypes.STRING,
     },
-    link: {
+    weblink: {
       type: DataTypes.STRING,
     },
     image: {
@@ -21,8 +21,8 @@ RestaurantModel.init(
   },
   {
     sequelize,
-    modelName: 'Restaurant', // Nombre del modelo
-    tableName: 'restaurant', // Nombre de la tabla en la base de datos
+    modelName: 'Restaurante', // Nombre del modelo
+    tableName: 'restaurantes', // Nombre de la tabla en la base de datos
   }
 );
 

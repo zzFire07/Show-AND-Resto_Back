@@ -3,7 +3,6 @@ const RestaurantService = require('../services/restaurantService.js');
 // Controlador para obtener un usuario por su ID
 
 async function findAll(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
   try {
     const allRestaurants = await RestaurantService.findAll(); 
     if (allRestaurants) {
@@ -24,8 +23,9 @@ async function createRestaurant(req, res) {
     const newRestaurant = await RestaurantService.createRestaurant({
       name,
       location,
-      link,
-      image
+      weblink,
+      image,
+      id_departamento
     });
 
 
@@ -60,14 +60,15 @@ async function deleteRestaurant(req, res) {
 async function updateRestaurant(req, res) {
   const restaurantId = req.params.restaurantId;
   try {
-    const { name, location, link, image } = req.body;
+    const { name, location, weblink, image, id_departamento } = req.body;
 
     // Llama al servicio para crear el restaurante
     const updatedRestaurant = await RestaurantService.updateRestaurant(restaurantId,{
       name,
       location,
-      link,
-      image
+      weblink,
+      image,
+      id_departamento
     });
 
     if (updatedRestaurant) {

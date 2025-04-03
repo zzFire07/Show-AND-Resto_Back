@@ -13,7 +13,7 @@ ShowModel.init(
     location: {
       type: DataTypes.STRING,
     },
-    link:{
+    weblink:{
       type:DataTypes.STRING,
     },
     image:{
@@ -32,7 +32,7 @@ ShowModel.init(
   {
     sequelize,
     modelName: 'Show', // Nombre del modelo
-    tableName: 'show', // Nombre de la tabla en la base de datos
+    tableName: 'shows', // Nombre de la tabla en la base de datos
   }
 );
 

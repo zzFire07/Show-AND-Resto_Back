@@ -1,5 +1,5 @@
 const { or } = require('sequelize');
-const RestaurantModel = require('../models/restaurantModel.js');
+const RestaurantModel = require('../models/restauranteModel.js');
 
 // Servicio para obtener un usuario por su ID
 
@@ -18,14 +18,15 @@ async function createRestaurant(data) {
   try {
     // Consulta para obtener el último ID en la tabla de restaurantes
 
-    const { name, location, link, image } = data;
+    const { name, location, weblink, image, id_departamento } = data;
 
     // Crea el restaurante en la base de datos utilizando el modelo y el nuevo ID
     const newRestaurant = await RestaurantModel.create({
       name,
       location,
-      link,
-      image
+      weblink,
+      image,
+      id_departamento
     });
 
     // Devuelve el restaurante creado
@@ -49,7 +50,7 @@ async function deleteRestaurant(restaurantId) {
 
 async function updateRestaurant(restaurantId,data) {
   try {
-    const { name, location, link, image } = data;
+    const { name, location, weblink, image, id_departamento } = data;
 
     // Crea el restaurante en la base de datos utilizando el modelo
     const findRestaurant = await RestaurantModel.findByPk(restaurantId)
@@ -57,8 +58,9 @@ async function updateRestaurant(restaurantId,data) {
     const updatedRestaurant = await findRestaurant.update({
       name,
       location,
-      link,
-      image
+      weblink,
+      image,
+      id_departamento
     });
 
     // Devuelve el restaurante creado
