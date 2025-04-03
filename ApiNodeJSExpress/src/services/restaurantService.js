@@ -1,5 +1,5 @@
 const { or } = require('sequelize');
-const RestaurantModel = require('../models/restauranteModel.js');
+const RestaurantModel = require('../models/restaurantModel.js');
 
 // Servicio para obtener un usuario por su ID
 
