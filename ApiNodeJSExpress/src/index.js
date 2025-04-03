@@ -6,6 +6,9 @@ const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
 
+const glob = require('glob');
+
+const path = require('path');
 
 //Configuraciones
 
@@ -24,7 +27,7 @@ const swaggerOptions = {
         },
       ],
     },
-    apis: ["./routes/*.js"], // Ruta de los archivos donde están las rutas
+    apis: ["src/routes/*.js"], // Ruta de los archivos donde están las rutas
   };
   
   const swaggerSpec = swaggerJsdoc(swaggerOptions);
