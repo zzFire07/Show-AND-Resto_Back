@@ -6,10 +6,6 @@ const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
 
-const glob = require('glob');
-
-const path = require('path');
-
 //Configuraciones
 
 // 🔹 Configuración de Swagger
