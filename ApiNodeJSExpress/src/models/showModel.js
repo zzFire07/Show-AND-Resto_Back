@@ -1,5 +1,6 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/database.js');
+const DepartamentoModel = require('./departamentoModel.js'); // Importar el modelo de departamentos
 
 class ShowModel extends Model {}
 
@@ -17,7 +18,16 @@ ShowModel.init(
     },
     image:{
       type: DataTypes.STRING,
-    }
+    },
+    id_departamento: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: DepartamentoModel, // Referencia al modelo de departamentos
+        key: 'id',
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'SET NULL', // Si se borra el departamento, deja este campo en null
+    },
   },
   {
     sequelize,
@@ -25,6 +35,10 @@ ShowModel.init(
     tableName: 'show', // Nombre de la tabla en la base de datos
   }
 );
+
+// Definir la relación
+ShowModel.belongsTo(DepartamentoModel, { foreignKey: 'id_departamento' });
+DepartamentoModel.hasMany(ShowModel, { foreignKey: 'id_departamento' });
 
 
 
