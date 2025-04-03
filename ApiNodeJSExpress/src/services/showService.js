@@ -6,7 +6,7 @@ const ShowModel = require('../models/showModel.js');
 async function createShow(data) {
   try {
 
-    const { name, location, weblink, image  } = data;
+    const { name, location, weblink, image, id_departamento } = data;
 
     // Crea el show en la base de datos utilizando el modelo y el nuevo ID
     const newShow = await ShowModel.create({
@@ -14,6 +14,7 @@ async function createShow(data) {
       location,
       weblink,
       image,
+      id_departamento
     });
 
     // Devuelve el show creado
