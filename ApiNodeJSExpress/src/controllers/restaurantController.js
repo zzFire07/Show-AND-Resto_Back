@@ -17,7 +17,7 @@ async function findAll(req, res) {
 
 async function createRestaurant(req, res) {
   try {
-    const { name, location, link, image } = req.body;
+    const { name, location, weblink, image } = req.body;
 
     // Llama al servicio para crear el restaurante
     const newRestaurant = await RestaurantService.createRestaurant({
