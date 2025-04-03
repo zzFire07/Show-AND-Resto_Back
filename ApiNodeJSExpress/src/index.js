@@ -19,8 +19,7 @@ app.use(express.json());
 app.use(require('./routes/restaurantRoutes.js')); 
 app.use(require('./routes/userRoutes.js')); 
 app.use(require('./routes/showRoutes.js')); 
-app.use(require('./routes/foodTypeRoutes.js')); 
-app.use(require('./routes/drinkTypeRoutes.js'));
+app.use(require('./routes/foodTypeRoutes.js'));
 
 //Iniciando el servidor
 app.listen(app.get('port'),()=>{
