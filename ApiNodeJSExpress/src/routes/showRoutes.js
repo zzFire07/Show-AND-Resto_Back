@@ -29,7 +29,7 @@ const ShowController = require('../controllers/showController');
  *                 type: string
  *               location:
  *                 type: string
- *               link:
+ *               weblink:
  *                 type: string
  *               image:
  *                 type: string
@@ -96,7 +96,7 @@ router.delete('/deleteShow/:showId', ShowController.deleteShow);
  *                 type: string
  *               location:
  *                 type: string
- *               link:
+ *               weblink:
  *                 type: string
  *               image:
  *                 type: string

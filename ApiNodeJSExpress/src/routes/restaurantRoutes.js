@@ -28,7 +28,7 @@ const RestaurantController = require('../controllers/restaurantController');
  *           type: string
  *          location:
  *           type: string
- *          link:
+ *          weblink:
  *           type: string
  *          image:
  *           type: string
@@ -91,7 +91,7 @@ router.delete('/deleteRestaurant/:restaurantId', RestaurantController.deleteRest
  *           type: string
  *          location:
  *           type: string
- *          link:
+ *          weblink:
  *           type: string
  *          image:
  *           type: string
