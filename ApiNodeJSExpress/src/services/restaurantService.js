@@ -10,7 +10,7 @@ async function findAll() {
     });
     return allRestaurants;
   } catch (error) {
-    throw new Error('Error al obtener el restaurante desde la base de datos');
+    throw new error;
   }
 }
 
