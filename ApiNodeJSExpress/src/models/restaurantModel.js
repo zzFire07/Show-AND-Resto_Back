@@ -24,6 +24,7 @@ RestaurantModel.init(
     modelName: 'Restaurante', // Nombre del modelo
     schema: 'public',
     tableName: 'restaurantes', // Nombre de la tabla en la base de datos
+    timestamps: false, // Si no necesitas createdAt y updatedAt
   }
 );
 
