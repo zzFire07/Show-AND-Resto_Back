@@ -6,7 +6,7 @@ class FoodTypeModel extends Model {}
 FoodTypeModel.init(
   {
     // Atributos del restaurante
-    nombre: {
+    name: {
       type: DataTypes.STRING,
     },
   },
