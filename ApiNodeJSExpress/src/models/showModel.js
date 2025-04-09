@@ -32,6 +32,7 @@ ShowModel.init(
   {
     sequelize,
     modelName: 'Show', // Nombre del modelo
+    schema: 'public',
     tableName: 'shows', // Nombre de la tabla en la base de datos
   }
 );

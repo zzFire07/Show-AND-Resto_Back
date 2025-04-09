@@ -18,6 +18,7 @@ DepartamentoModel.init(
     sequelize,
     modelName: 'Departamento',
     tableName: 'departamentos',
+    schema: 'public',
     timestamps: false, // Si no necesitas createdAt y updatedAt
   }
 );

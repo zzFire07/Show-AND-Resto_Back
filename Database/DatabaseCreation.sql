@@ -54,11 +54,6 @@ CREATE TABLE public.restaurantes (
     CONSTRAINT fk_shows_departamentos FOREIGN KEY (id_departamento) 
         REFERENCES public.departamentos(id)
         ON UPDATE CASCADE
-        ON DELETE SET NULL,
-    id_tipocomida integer,
-    CONSTRAINT fk_restaurantes_tipocomidas FOREIGN KEY (id_tipocomida) 
-        REFERENCES public.tipocomidas(id)
-        ON UPDATE CASCADE
         ON DELETE SET NULL
 );
 CREATE SEQUENCE public.restaurantes_id_seq

@@ -22,6 +22,7 @@ RestaurantModel.init(
   {
     sequelize,
     modelName: 'Restaurante', // Nombre del modelo
+    schema: 'public',
     tableName: 'restaurantes', // Nombre de la tabla en la base de datos
   }
 );

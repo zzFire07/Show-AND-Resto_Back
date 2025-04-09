@@ -13,6 +13,7 @@ FoodTypeModel.init(
   {
     sequelize,
     modelName: 'FoodType', // Nombre del modelo
+    schema: 'public',
     tableName: 'tipocomidas', // Nombre de la tabla en la base de datos
   }
 );
