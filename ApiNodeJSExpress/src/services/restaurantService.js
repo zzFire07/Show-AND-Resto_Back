@@ -5,10 +5,11 @@ const RestaurantModel = require('../models/restaurantModel.js');
 
 async function findAll() {
   try {
+    console.log('findAll en service');
     const allRestaurants = await RestaurantModel.findAll({
       order: [['id', 'ASC']], // Ordena por la columna 'id' de manera ascendente (de menor a mayor)
     });
-    console.log('allRestaurants', allRestaurants);
+    console.log('all restaurant cargados supuestamente', allRestaurants);
     return allRestaurants;
   } catch (error) {
     throw new Error('Error al obtener el restaurante desde la base de datos');
