@@ -19,6 +19,10 @@ async function createFoodType(req, res) {
   try {
     const {nombre} = req.body;
 
+    if (!nombre) {
+      return res.status(400).json({ message: 'El nombre es obligatorio' });
+    }
+
     // Llama al servicio para crear el tipo de comida
     const newFoodType = await FoodTypeService.createFoodType({
       nombre,
@@ -27,7 +31,7 @@ async function createFoodType(req, res) {
     if (newFoodType) {
       return res.status(200).json(newFoodType);
     } else {
-      return res.status(404).json({ message: 'Ya existe un tipo de comida con esos parámetros' });
+      return res.status(409).json({ message: 'Ya existe un tipo de comida con esos parámetros' });
     }
   } catch (error) {
     res.status(500).json({ error: 'Error al crear el tipo de comida', error: error.message });
@@ -37,8 +41,12 @@ async function createFoodType(req, res) {
 
 async function deleteFoodType(req, res) {
   const foodTypeId = req.params.foodTypeId;
+
+  if (!foodTypeId) {
+    return res.status(400).json({ message: 'El id es obligatorio' });
+  }
+
   try {
-    
     // Llama al servicio para eliminar el tipo de comida
     const deletedFoodType = await FoodTypeService.deleteFoodType(foodTypeId);
     
@@ -54,9 +62,19 @@ async function deleteFoodType(req, res) {
 
 async function updateFoodType(req, res) {
   const foodTypeId = req.params.foodTypeId;
-  try {
-    const { nombre } = req.body;
+  const { nombre } = req.body;
 
+  if (!foodTypeId) {
+    return res.status(400).json({ message: 'El id es obligatorio' });
+  }
+  if (!nombre) {
+    return res.status(400).json({ message: 'El nombre es obligatorio' });
+  }
+  if (nombre.length < 3) {
+    return res.status(400).json({ message: 'El nombre debe tener al menos 3 caracteres' });
+  }
+
+  try {
     // Llama al servicio para actualizar el restaurante
     const updatedFoodType = await FoodTypeService.updateFoodType(foodTypeId,{
       nombre,
@@ -74,6 +92,10 @@ async function updateFoodType(req, res) {
 
 async function findByIdFoodType(req, res) {
   const foodTypeId = req.params.foodTypeId;
+  if (!foodTypeId) {
+    return res.status(400).json({ message: 'El id es obligatorio' });
+  }
+
   try {
     const findFoodType = await FoodTypeService.findByIdFoodType(foodTypeId);
     

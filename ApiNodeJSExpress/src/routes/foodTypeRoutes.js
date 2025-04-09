@@ -33,8 +33,10 @@ const FoodTypeController = require('../controllers/foodTypeController');
  *     description: Tipo de comida creado exitosamente.
  *   400:
  *     description: Error al crear el tipo de comida.
- *  500:
- *    description: Error interno del servidor.
+ *   409:
+ *     description: Tipo de comida ya existe.
+ *   500:
+ *     description: Error interno del servidor.
  */
 router.post('/createFoodType', FoodTypeController.createFoodType); //Especificar post en postman
 

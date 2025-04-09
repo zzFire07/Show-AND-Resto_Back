@@ -42,8 +42,12 @@ async function createRestaurant(req, res) {
 
 async function deleteRestaurant(req, res) {
   const restaurantId = req.params.restaurantId;
+
+  if (!restaurantId) {
+    return res.status(400).json({ message: 'El id del restaurante es requerido' });
+  }
+
   try {
-    
     // Llama al servicio para crear el restaurante
     const deletedRestaurant = await RestaurantService.deleteRestaurant(restaurantId);
     
@@ -59,6 +63,13 @@ async function deleteRestaurant(req, res) {
 
 async function updateRestaurant(req, res) {
   const restaurantId = req.params.restaurantId;
+
+  if (!restaurantId) {
+    return res.status(400).json({ message: 'El id del restaurante es requerido' });
+  }
+  if (!req.body) {
+    return res.status(400).json({ message: 'Los datos del restaurante son requeridos' });
+  }
   try {
     const { name, location, weblink, image, id_departamento } = req.body;
 
@@ -83,6 +94,9 @@ async function updateRestaurant(req, res) {
 
 async function findByIdRestaurant(req, res) {
   const restaurantId = req.params.restaurantId;
+  if(!restaurantId) {
+    return res.status(400).json({ message: 'El id del restaurante es requerido' });
+  }
   try {
     // Llama al servicio para crear el restaurante
     const findRestaurant = await RestaurantService.findByIdRestaurant(restaurantId);

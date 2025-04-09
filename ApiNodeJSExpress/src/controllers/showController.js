@@ -16,8 +16,11 @@ async function findAllShow(req, res) {
 }
 
 async function createShow(req, res) {
+  const { name, location, weblink, image } = req.body;
+  if(!name || !location || !weblink || !image) {
+    return res.status(400).json({ message: 'Todos los campos son requeridos' });
+  }
   try {
-    const { name, location, weblink, image } = req.body;
 
     // Llama al servicio para crear el show
     const newShow = await ShowService.createShow({
@@ -42,7 +45,9 @@ async function createShow(req, res) {
 // Controlador para eliminar un show por su id
 async function deleteShow(req, res) {
     const showId = req.params.showId;
-  
+    if(!showId) {
+      return res.status(400).json({ message: 'El id del show es requerido' });
+    }
     try {
       // Llamamos al servicio para eliminar el show de la base de datos
       await ShowService.deleteShow(showId);
@@ -58,7 +63,12 @@ async function deleteShow(req, res) {
 // Controlador para actualizar un show
 async function updateShow(req, res) {
     const showId = req.params.showId;
-  
+    if (!showId) {
+      return res.status(400).json({ message: 'El id del show es requerido' });
+    }
+    if (!req.body) {
+      return res.status(400).json({ message: 'Los datos del show son requeridos' });
+    }
     try {
       // Extraemos los datos que nos pasen (JSON)
       const { nombre, fecha, weblink, image, id_departamento} = req.body;
@@ -85,6 +95,9 @@ async function updateShow(req, res) {
 
 async function findByIdShow(req, res) {
   const showId = req.params.showId;
+  if (!showId) {
+    return res.status(400).json({ message: 'El id del show es requerido' });
+  }
   try {
     // Llama al servicio para crear el show
     const findShow = await ShowService.findByIdShow(showId);

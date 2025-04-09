@@ -62,7 +62,9 @@ router.post('/createRestaurant', RestaurantController.createRestaurant); //Espec
  *     200:
  *      description: Restaurante eliminado
  *     400:
- *      description: Error al eliminar el restaurante
+ *      description: Error al eliminar el restaurante.
+ *     404:
+ *      description: Restaurante no encontrado.
  *     500:
  *      description: Error interno del servidor
  */
@@ -103,6 +105,8 @@ router.delete('/deleteRestaurant/:restaurantId', RestaurantController.deleteRest
  *     description: Restaurante actualizado
  *    400:
  *     description: Error al actualizar el restaurante
+ *    404:
+ *     description: Restaurante no encontrado.
  *    500:
  *     description: Error interno del servidor
  */
@@ -126,6 +130,8 @@ router.put('/updateRestaurant/:restaurantId', RestaurantController.updateRestaur
  *     description: Restaurante encontrado
  *    400:
  *     description: Error al obtener el restaurante
+ *    404:
+ *     description: Restaurante no encontrado.
  *    500:
  *     description: Error interno del servidor
  */
@@ -143,6 +149,8 @@ router.get('/findByIdRestaurant/:restaurantId', RestaurantController.findByIdRes
  *     description: Lista de restaurantes
  *    400:
  *     description: Error al obtener los restaurantes
+ *    404:
+ *     description: No se encontraron restaurantes.
  *    500:
  *     description: Error interno del servidor
  */
