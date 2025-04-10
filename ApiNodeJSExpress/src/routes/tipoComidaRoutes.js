@@ -78,16 +78,15 @@ router.delete('/deleteTipoComida/:tipoComidaId', tipoComidaController.deleteTipo
  *         type: integer
  *     requestBody:
  *         required: true
- *         description: Datos del tipo de comida a actualizar
  *         content:
  *          application/json:
  *           schema:
  *            type: object
- *           properties:
- *            name:
- *             type: string
- *             description: Nombre del tipo de comida
- *             example: "Comida Italiana"
+ *            properties:
+ *             name:
+ *              type: string
+ *              description: Nombre del tipo de comida
+ *              example: "Comida Italiana"
  *     responses:
  *       200:
  *         description: Tipo de comida encontrado
