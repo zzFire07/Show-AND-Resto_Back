@@ -54,7 +54,7 @@ async function updateTipoComida(tipoComidaId,data) {
     // Devuelve el restaurante creado
     return updatedTipoComida;
   } catch (error) {
-    throw new Error('Error al modificar el tipo de comida desde el JSON');
+    throw new Error('Error al modificar el tipo de comida desde el JSON :' + error.message);
   }
 }
 
