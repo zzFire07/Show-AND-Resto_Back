@@ -62,9 +62,9 @@ async function deleteRestaurante(req, res) {
 }
 
 async function updateRestaurante(req, res) {
-  const restaurantId = req.params.restaurantId;
+  const restauranteId = req.params.restauranteId;
 
-  if (!restaurantId) {
+  if (!restauranteId) {
     return res.status(400).json({ message: 'El id del restaurante es requerido' });
   }
   if (!req.body) {
@@ -74,7 +74,7 @@ async function updateRestaurante(req, res) {
     const { name, location, weblink, image, id_departamento } = req.body;
 
     // Llama al servicio para crear el restaurante
-    const updatedRestaurant = await RestaurantService.updateRestaurant(restaurantId,{
+    const updatedRestaurante = await RestauranteService.updateRestaurante(restauranteId,{
       name,
       location,
       weblink,
@@ -82,8 +82,8 @@ async function updateRestaurante(req, res) {
       id_departamento
     });
 
-    if (updatedRestaurant) {
-      return res.status(200).json(updatedRestaurant);
+    if (updatedRestaurante) {
+      return res.status(200).json(updatedRestaurante);
     } else {
       return res.status(404).json({ message: 'Ningún restaurante ha sido encontrado con ese id para actualizarlo' });
     }

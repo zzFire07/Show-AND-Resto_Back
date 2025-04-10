@@ -55,7 +55,7 @@ async function updateRestaurante(restauranteId,data) {
     // Crea el restaurante en la base de datos utilizando el modelo
     const findRestaurante = await RestauranteModel.findByPk(restauranteId)
         
-    const updatedRestaurante = await RestauranteModel.update({
+    const updatedRestaurante = await findRestaurante.update({
       name,
       location,
       weblink,
