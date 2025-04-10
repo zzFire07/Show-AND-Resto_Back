@@ -78,7 +78,7 @@ router.delete('/deleteRestaurante/:restauranteId', RestauranteController.deleteR
  *    summary: Actualiza un restaurante por su ID
  *    tags: [Restaurantes]
  *    parameters:
- *      - name: restaurantId
+ *      - name: restauranteId
  *        in: path
  *        required: true
  *        description: ID del restaurante a actualizar
