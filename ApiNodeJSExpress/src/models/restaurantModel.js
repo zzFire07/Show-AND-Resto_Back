@@ -17,7 +17,10 @@ RestaurantModel.init(
     },
     image: {
       type: DataTypes.STRING,
-    }
+    },
+    id_departamento: {
+      type: DataTypes.INTEGER,
+    },
   },
   {
     sequelize,

@@ -5,7 +5,6 @@ const RestaurantService = require('../services/restaurantService.js');
 async function findAll(req, res) {
   try {
     const allRestaurants = await RestaurantService.findAll(); 
-    console.log('allRestaurants en controller', allRestaurants);
     if (allRestaurants) {
       return res.status(200).json(allRestaurants);
     } else {
