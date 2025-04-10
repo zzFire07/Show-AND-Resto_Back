@@ -1,12 +1,12 @@
-const FoodTypeService = require('../services/foodTypeService.js');
+const tipoComidaService = require('../services/tipoComidaService.js');
 
 // Controlador para obtener un usuario por su ID
 
 async function findAll(req, res) {
   try {
-    const allFoodTypes = await FoodTypeService.findAll(); 
-    if (allFoodTypes) {
-      return res.status(200).json(allFoodTypes);
+    const allTipoComida = await tipoComidaService.findAll(); 
+    if (allTipoComida) {
+      return res.status(200).json(allTipoComida);
     } else {
       return res.status(404).json({ message: 'Ningún tipo de comida ha sido encontrado' });
     }
@@ -15,21 +15,21 @@ async function findAll(req, res) {
   }
 }
 
-async function createFoodType(req, res) {
+async function createTipoComida(req, res) {
   try {
-    const {nombre} = req.body;
+    const {name} = req.body;
 
-    if (!nombre) {
+    if (!name) {
       return res.status(400).json({ message: 'El nombre es obligatorio' });
     }
 
     // Llama al servicio para crear el tipo de comida
-    const newFoodType = await FoodTypeService.createFoodType({
-      nombre,
+    const newTipoComida = await tipoComidaService.createTipoComida({
+      name,
     });
 
-    if (newFoodType) {
-      return res.status(200).json(newFoodType);
+    if (newTipoComida) {
+      return res.status(200).json(newTipoComida);
     } else {
       return res.status(409).json({ message: 'Ya existe un tipo de comida con esos parámetros' });
     }
@@ -39,18 +39,18 @@ async function createFoodType(req, res) {
 }
 
 
-async function deleteFoodType(req, res) {
-  const foodTypeId = req.params.foodTypeId;
+async function deleteTipoComida(req, res) {
+  const tipoComidaId = req.params.tipoComidaId;
 
-  if (!foodTypeId) {
+  if (!tipoComidaId) {
     return res.status(400).json({ message: 'El id es obligatorio' });
   }
 
   try {
     // Llama al servicio para eliminar el tipo de comida
-    const deletedFoodType = await FoodTypeService.deleteFoodType(foodTypeId);
+    const deletedTipoComida = await tipoComidaService.deleteTipoComida(tipoComidaId);
     
-    if (deletedFoodType) {
+    if (deletedTipoComida) {
       return res.status(200).json("El tipo de comida ha sido eliminado exitosamente");
     } else {
       return res.status(404).json({ message: 'Ningún tipo de comida ha sido encontrado con ese id para eliminarlo' });
@@ -60,28 +60,28 @@ async function deleteFoodType(req, res) {
   }
 }
 
-async function updateFoodType(req, res) {
-  const foodTypeId = req.params.foodTypeId;
-  const { nombre } = req.body;
+async function updateTipoComida(req, res) {
+  const tipoComidaId = req.params.tipoComidaId;
+  const { name } = req.body;
 
-  if (!foodTypeId) {
+  if (!tipoComidaId) {
     return res.status(400).json({ message: 'El id es obligatorio' });
   }
-  if (!nombre) {
+  if (!name) {
     return res.status(400).json({ message: 'El nombre es obligatorio' });
   }
-  if (nombre.length < 3) {
+  if (name.length < 3) {
     return res.status(400).json({ message: 'El nombre debe tener al menos 3 caracteres' });
   }
 
   try {
     // Llama al servicio para actualizar el restaurante
-    const updatedFoodType = await FoodTypeService.updateFoodType(foodTypeId,{
-      nombre,
+    const updatedTipoComida = await tipoComidaService.updateTipoComida(tipoComidaId,{
+      name,
     });
 
-    if (updatedFoodType) {
-      return res.status(200).json(updatedFoodType);
+    if (updatedTipoComida) {
+      return res.status(200).json(updatedTipoComida);
     } else {
       return res.status(404).json({ message: 'Ningún tipo de comida ha sido encontrado con ese id para actualizarlo' });
     }
@@ -90,17 +90,17 @@ async function updateFoodType(req, res) {
   }
 }
 
-async function findByIdFoodType(req, res) {
-  const foodTypeId = req.params.foodTypeId;
-  if (!foodTypeId) {
+async function findByIdTipoComida(req, res) {
+  const tipoComidaId = req.params.tipoComidaId;
+  if (!tipoComidaId) {
     return res.status(400).json({ message: 'El id es obligatorio' });
   }
 
   try {
-    const findFoodType = await FoodTypeService.findByIdFoodType(foodTypeId);
+    const findTipoComida = await tipoComidaService.findByIdTipoComida(tipoComidaId);
     
-    if (findFoodType) {
-      return res.status(200).json(findFoodType);
+    if (findTipoComida) {
+      return res.status(200).json(findTipoComida);
     } else {
       return res.status(404).json({ message: 'Ningún tipo de comida ha sido encontrado con ese id' });
     }
@@ -111,8 +111,8 @@ async function findByIdFoodType(req, res) {
 
 module.exports = {
   findAll,
-  createFoodType,
-  deleteFoodType,
-  updateFoodType,
-  findByIdFoodType,
+  createTipoComida,
+  deleteTipoComida,
+  updateTipoComida,
+  findByIdTipoComida,
 };

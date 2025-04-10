@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const FoodTypeController = require('../controllers/foodTypeController');
+const tipoComidaController = require('../controllers/tipoComidaController.js'); //Importar el controlador de tipoComidaController
 
 /**
  * @swagger
@@ -14,7 +14,7 @@ const FoodTypeController = require('../controllers/foodTypeController');
 // Ruta para crear un nuevo tipo de comida
 /**
  * @swagger
- * /createFoodType:
+ * /createTipoComida:
  *  post:
  *   summary: Crear un nuevo tipo de comida
  *   tags: [Tipos de comida]
@@ -26,7 +26,7 @@ const FoodTypeController = require('../controllers/foodTypeController');
  *        schema:
  *          type: object
  *          properties:
- *            nombre:
+ *            name:
  *              type: string
  *  responses:
  *   200:
@@ -38,17 +38,17 @@ const FoodTypeController = require('../controllers/foodTypeController');
  *   500:
  *     description: Error interno del servidor.
  */
-router.post('/createFoodType', FoodTypeController.createFoodType); //Especificar post en postman
+router.post('/createTipoComida', tipoComidaController.createTipoComida); //Especificar post en postman
 
 // Ruta para eliminar un tipo de comida
 /**
  * @swagger
- * /deleteFoodType/{foodTypeId}:
+ * /deleteTipoComida/{tipoComidaId}:
  *   delete:
  *     summary: Elimina un tipo de comida por su ID
  *     tags: [Tipos de comida]
  *     parameters:
- *       - name: foodTypeId
+ *       - name: tipoComidaId
  *         in: path
  *         required: true
  *         description: ID del tipo de comida a eliminar
@@ -61,17 +61,17 @@ router.post('/createFoodType', FoodTypeController.createFoodType); //Especificar
  *       500:
  *         description: Error interno del servidor
  */
-router.delete('/deleteFoodType/:foodTypeId', FoodTypeController.deleteFoodType); //Especificar delete en postman
+router.delete('/deleteTipoComida/:tipoComidaId', tipoComidaController.deleteTipoComida); //Especificar delete en postman
 
 // Ruta para actualizar un tipo de comida por su ID
 /**
  * @swagger
- * /updateFoodType/{foodTypeId}:
+ * /updateTipoComida/{tipoComidaId}:
  *   get:
  *     summary: Actualiza un tipo de comida por su ID
  *     tags: [Tipos de comida]
  *     parameters:
- *       - name: foodTypeId
+ *       - name: tipoComidaId
  *         in: path
  *         required: true
  *         description: ID del tipo de comida a actualizar
@@ -84,7 +84,7 @@ router.delete('/deleteFoodType/:foodTypeId', FoodTypeController.deleteFoodType);
  *           schema:
  *            type: object
  *           properties:
- *            nombre:
+ *            name:
  *             type: string
  *             description: Nombre del tipo de comida
  *             example: "Comida Italiana"
@@ -96,7 +96,7 @@ router.delete('/deleteFoodType/:foodTypeId', FoodTypeController.deleteFoodType);
  *       500:
  *         description: Error interno del servidor
  */
-router.put('/updateFoodType/:foodTypeId', FoodTypeController.updateFoodType); //Especificar put en postman
+router.put('/updateTipoComida/:tipoComidaId', tipoComidaController.updateTipoComida); //Especificar put en postman
 
 /**
  * @swagger
@@ -118,11 +118,11 @@ router.put('/updateFoodType/:foodTypeId', FoodTypeController.updateFoodType); //
  *       500:
  *         description: Error interno del servidor
  */
-router.get('/findByIdFoodType/:foodTypeId', FoodTypeController.findByIdFoodType)
+router.get('/findByIdTipoComida/:tipoComidaId', tipoComidaController.findByIdTipoComida)
 
 /**
  * @swagger
- * /findAllFoodType:
+ * /findAllTipoComida:
  *   get:
  *     summary: Obtiene todos los tipos de comida
  *     tags: [Tipos de comida]
@@ -134,6 +134,6 @@ router.get('/findByIdFoodType/:foodTypeId', FoodTypeController.findByIdFoodType)
  *      500:
  *        description: Error interno del servidor
  */
-router.get('/findAllFoodType', FoodTypeController.findAll);
+router.get('/findAllTipoComida', tipoComidaController.findAll);
 
 module.exports = router;

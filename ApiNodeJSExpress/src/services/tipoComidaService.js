@@ -1,68 +1,68 @@
 const { or } = require('sequelize');
-const FoodTypeModel = require('../models/foodTypeModel.js');
+const tipoComidaModel = require('../models/tipoComidaModel.js');
 
 // Servicio para obtener un usuario por su ID
 
 async function findAll() {
   try {
-    const allFoodTypes = await FoodTypeModel.findAll({
+    const allTipoComidas = await tipoComidaModel.findAll({
       order: [['id', 'ASC']], // Ordena por la columna 'id' de manera ascendente (de menor a mayor)
     });
-    return allFoodTypes;
+    return allTipoComidas;
   } catch (error) {
     throw new Error('Error al obtener el tipo de comida desde la base de datos');
   }
 }
 
-async function createFoodType(data) {
+async function createTipoComida(data) {
   try {
-    const { nombre } = data;
+    const { name } = data;
 
     // Crea el restaurante en la base de datos utilizando el modelo y el nuevo ID
-    const newFoodType = await FoodTypeModel.create({
+    const newTipoComida = await tipoComidaModel.create({
       nombre,
     });
 
     // Devuelve el restaurante creado
-    return newFoodType;
+    return newTipoComida;
   } catch (error) {
     throw new Error('Error al crear el tipo de comida desde el JSON');
   }
 }
 
-async function deleteFoodType(foodTypeId) {
+async function deleteTipoComida(tipoComidaId) {
   try {
-    const deletedFoodType = await FoodTypeModel.destroy( {where:{id:foodTypeId}} )
+    const deletedTipoComida = await tipoComidaModel.destroy( {where:{id:tipoComidaId}} )
 
     // Devuelve el restaurante creado
-    return deletedFoodType;
+    return deletedTipoComida;
   } catch (error) {
     throw new Error('Error al crear el tipo de comida desde el JSON');
   }
 }
 
-async function updateFoodType(foodTypeId,data) {
+async function updateTipoComida(tipoComidaId,data) {
   try {
-    const { nombre } = data;
+    const { name } = data;
 
-    const findFoodType = await FoodTypeModel.findByPk(foodTypeId)
+    const findTipoComida = await tipoComidaModel.findByPk(tipoComidaId)
         
-    const updatedFoodType = await findFoodType.update({
-      nombre,
+    const updatedTipoComida = await tipoComidaModel.update({
+      name,
     });
 
     // Devuelve el restaurante creado
-    return updatedFoodType;
+    return updatedTipoComida;
   } catch (error) {
     throw new Error('Error al modificar el tipo de comida desde el JSON');
   }
 }
 
-async function findByIdFoodType(foodTypeId) {
+async function findByIdTipoComida(tipoComidaId) {
   try {
-    const findFoodType = await FoodTypeModel.findByPk(foodTypeId); 
+    const findTipoComida = await FoodTypeModel.findByPk(tipoComidaId); 
     
-    return findFoodType;
+    return findTipoComida;
   } catch (error) {
     throw new Error('Error al obtener el tipo de comida desde la base de datos');
   }
@@ -71,8 +71,8 @@ async function findByIdFoodType(foodTypeId) {
 
 module.exports = {
   findAll,
-  createFoodType,
-  deleteFoodType,
-  updateFoodType,
-  findByIdFoodType,
+  createTipoComida,
+  deleteTipoComida,
+  updateTipoComida,
+  findByIdTipoComida,
 };
