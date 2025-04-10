@@ -43,9 +43,9 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
  
  
 //Routes
-app.use(require('./routes/restaurantRoutes.js'));
+app.use(require('./routes/restauranteRoutes.js'));
 app.use(require('./routes/showRoutes.js')); 
-app.use(require('./routes/foodTypeRoutes.js'));
+app.use(require('./routes/tipoComidaRoutes.js'));
 
 //Iniciando el servidor
 app.listen(app.get('port'),()=>{
