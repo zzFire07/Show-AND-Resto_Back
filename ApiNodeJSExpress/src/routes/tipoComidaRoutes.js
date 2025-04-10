@@ -108,13 +108,13 @@ router.put('/updateTipoComida/:tipoComidaId', tipoComidaController.updateTipoCom
  *       - name: tipoComidaId
  *         in: path
  *         required: true
- *         description: ID del show a buscar
+ *         description: ID del tipo de comida a buscar
  *         type: integer
  *     responses:
  *       200:
- *         description: Show encontrado
+ *         description: Tipo de comida encontrado
  *       404:
- *         description: Show no encontrado
+ *         description: Tipo de comida no encontrado
  *       500:
  *         description: Error interno del servidor
  */
@@ -128,9 +128,9 @@ router.get('/findByIdTipoComida/:tipoComidaId', tipoComidaController.findByIdTip
  *     tags: [Tipos de comida]
  *     responses:
  *      200:
- *        description: Lista de shows
+ *        description: Lista de Tipo de comidas
  *      404:
- *        description: No se encontraron shows
+ *        description: No se encontraron Tipo de comidas
  *      500:
  *        description: Error interno del servidor
  */

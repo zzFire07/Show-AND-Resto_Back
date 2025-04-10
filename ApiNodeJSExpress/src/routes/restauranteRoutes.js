@@ -57,6 +57,7 @@ router.post('/createRestaurante', RestauranteController.createRestaurante); //Es
  *        in: path
  *        required: true
  *        description: ID del restaurante a eliminar
+ *        type: integer
  * 
  *    responses:
  *     200:
@@ -82,6 +83,7 @@ router.delete('/deleteRestaurante/:restauranteId', RestauranteController.deleteR
  *        in: path
  *        required: true
  *        description: ID del restaurante a actualizar
+ *        type: integer
  *    requestBody:
  *     required: true
  *     content:
@@ -100,15 +102,15 @@ router.delete('/deleteRestaurante/:restauranteId', RestauranteController.deleteR
  *          id_departamento:
  *           type: integer
  *
- *   responses:
- *    200:
- *     description: Restaurante actualizado
- *    400:
- *     description: Error al actualizar el restaurante
- *    404:
- *     description: Restaurante no encontrado.
- *    500:
- *     description: Error interno del servidor
+ *    responses:
+ *     200:
+ *      description: Restaurante actualizado
+ *     400:
+ *      description: Error al actualizar el restaurante
+ *     404:
+ *      description: Restaurante no encontrado.
+ *     500:
+ *      description: Error interno del servidor
  */
 router.put('/updateRestaurante/:restauranteId', RestauranteController.updateRestaurante); //Especificar put en postman
 
@@ -124,16 +126,17 @@ router.put('/updateRestaurante/:restauranteId', RestauranteController.updateRest
  *        in: path
  *        required: true
  *        description: ID del restaurante a obtener
+ *        type: integer
  *
- *   responses:
- *    200:
- *     description: Restaurante encontrado
- *    400:
- *     description: Error al obtener el restaurante
- *    404:
- *     description: Restaurante no encontrado.
- *    500:
- *     description: Error interno del servidor
+ *    responses:
+ *     200:
+ *      description: Restaurante encontrado
+ *     400:
+ *      description: Error al obtener el restaurante
+ *     404:
+ *      description: Restaurante no encontrado.
+ *     500:
+ *      description: Error interno del servidor
  */
 router.get('/findByIdRestaurante/:restauranteId', RestauranteController.findByIdRestaurante)
 
