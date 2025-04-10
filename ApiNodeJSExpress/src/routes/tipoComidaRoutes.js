@@ -28,15 +28,15 @@ const tipoComidaController = require('../controllers/tipoComidaController.js'); 
  *          properties:
  *            name:
  *              type: string
- *  responses:
- *   200:
- *     description: Tipo de comida creado exitosamente.
- *   400:
- *     description: Error al crear el tipo de comida.
- *   409:
- *     description: Tipo de comida ya existe.
- *   500:
- *     description: Error interno del servidor.
+ *   responses:
+ *    200:
+ *      description: Tipo de comida creado exitosamente.
+ *    400:
+ *      description: Error al crear el tipo de comida.
+ *    409:
+ *      description: Tipo de comida ya existe.
+ *    500:
+ *      description: Error interno del servidor.
  */
 router.post('/createTipoComida', tipoComidaController.createTipoComida); //Especificar post en postman
 
