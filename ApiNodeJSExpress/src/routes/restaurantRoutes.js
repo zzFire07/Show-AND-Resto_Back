@@ -140,7 +140,7 @@ router.get('/findByIdRestaurant/:restaurantId', RestaurantController.findByIdRes
 // Ruta para obtener todos los restaurantes
 /**
  * @swagger
- * /getAllRestaurant:
+ * /findAllRestaurant:
  *  get:
  *   summary: Obtiene todos los restaurantes
  *   tags: [Restaurantes]
