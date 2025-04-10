@@ -1,12 +1,12 @@
-const RestaurantService = require('../services/restaurantService.js');
+const RestauranteService = require('../services/restauranteService.js');
 
 // Controlador para obtener un usuario por su ID
 
 async function findAll(req, res) {
   try {
-    const allRestaurants = await RestaurantService.findAll(); 
-    if (allRestaurants) {
-      return res.status(200).json(allRestaurants);
+    const allRestaurantes = await RestauranteService.findAll(); 
+    if (allRestaurantes) {
+      return res.status(200).json(allRestaurantes);
     } else {
       return res.status(404).json({ message: 'Ningún restaurant ha sido encontrado' });
     }
@@ -15,12 +15,12 @@ async function findAll(req, res) {
   }
 }
 
-async function createRestaurant(req, res) {
+async function createRestaurante(req, res) {
   try {
     const { name, location, weblink, image, id_departamento} = req.body;
 
     // Llama al servicio para crear el restaurante
-    const newRestaurant = await RestaurantService.createRestaurant({
+    const newRestaurante = await RestauranteService.createRestaurante({
       name,
       location,
       weblink,
@@ -29,8 +29,8 @@ async function createRestaurant(req, res) {
     });
 
 
-    if (newRestaurant) {
-      return res.status(200).json(newRestaurant);
+    if (newRestaurante) {
+      return res.status(200).json(newRestaurante);
     } else {
       return res.status(404).json({ message: 'Ya existe un restaurante con esos parámetros' });
     }
@@ -40,18 +40,18 @@ async function createRestaurant(req, res) {
 }
 
 
-async function deleteRestaurant(req, res) {
-  const restaurantId = req.params.restaurantId;
+async function deleteRestaurante(req, res) {
+  const restauranteId = req.params.restauranteId;
 
-  if (!restaurantId) {
+  if (!restauranteId) {
     return res.status(400).json({ message: 'El id del restaurante es requerido' });
   }
 
   try {
     // Llama al servicio para crear el restaurante
-    const deletedRestaurant = await RestaurantService.deleteRestaurant(restaurantId);
+    const deletedRestaurante = await RestauranteService.deleteRestaurante(restauranteId);
     
-    if (deletedRestaurant) {
+    if (deletedRestaurante) {
       return res.status(200).json("El restaurante ha sido eliminado exitosamente");
     } else {
       return res.status(404).json({ message: 'Ningún restaurante ha sido encontrado con ese id para eliminarlo' });
@@ -61,7 +61,7 @@ async function deleteRestaurant(req, res) {
   }
 }
 
-async function updateRestaurant(req, res) {
+async function updateRestaurante(req, res) {
   const restaurantId = req.params.restaurantId;
 
   if (!restaurantId) {
@@ -92,17 +92,17 @@ async function updateRestaurant(req, res) {
   }
 }
 
-async function findByIdRestaurant(req, res) {
-  const restaurantId = req.params.restaurantId;
-  if(!restaurantId) {
+async function findByIdRestaurante(req, res) {
+  const restauranteId = req.params.restauranteId;
+  if(!restauranteId) {
     return res.status(400).json({ message: 'El id del restaurante es requerido' });
   }
   try {
     // Llama al servicio para crear el restaurante
-    const findRestaurant = await RestaurantService.findByIdRestaurant(restaurantId);
+    const findRestaurante = await RestauranteService.findByIdRestaurante(restauranteId);
     
-    if (findRestaurant) {
-      return res.status(200).json(findRestaurant);
+    if (findRestaurante) {
+      return res.status(200).json(findRestaurante);
     } else {
       return res.status(404).json({ message: 'Ningún restaurante ha sido encontrado con ese id' });
     }
@@ -113,8 +113,8 @@ async function findByIdRestaurant(req, res) {
 
 module.exports = {
   findAll,
-  createRestaurant,
-  deleteRestaurant,
-  updateRestaurant,
-  findByIdRestaurant,
+  createRestaurante,
+  deleteRestaurante,
+  updateRestaurante,
+  findByIdRestaurante,
 };

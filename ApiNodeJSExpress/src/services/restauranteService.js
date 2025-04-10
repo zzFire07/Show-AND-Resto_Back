@@ -1,27 +1,27 @@
 const { or } = require('sequelize');
-const RestaurantModel = require('../models/restaurantModel.js');
+const RestauranteModel = require('../models/restauranteModel.js');
 
 // Servicio para obtener un usuario por su ID
 
 async function findAll() {
   try {
-    const allRestaurants = await RestaurantModel.findAll({
+    const allRestaurantes = await RestauranteModel.findAll({
       order: [['id', 'ASC']], // Ordena por la columna 'id' de manera ascendente (de menor a mayor)
     });
-    return allRestaurants;
+    return allRestaurantes;
   } catch (error) {
     throw new Error('Error al obtener el restaurante desde la base de datos');
   }
 }
 
-async function createRestaurant(data) {
+async function createRestaurante(data) {
   try {
     // Consulta para obtener el último ID en la tabla de restaurantes
 
     const { name, location, weblink, image, id_departamento } = data;
 
     // Crea el restaurante en la base de datos utilizando el modelo y el nuevo ID
-    const newRestaurant = await RestaurantModel.create({
+    const newRestaurante = await RestauranteModel.create({
       name,
       location,
       weblink,
@@ -30,32 +30,32 @@ async function createRestaurant(data) {
     });
 
     // Devuelve el restaurante creado
-    return newRestaurant;
+    return newRestaurante;
   } catch (error) {
     throw new Error('Error al crear el restaurante desde el JSON');
   }
 }
 
-async function deleteRestaurant(restaurantId) {
+async function deleteRestaurante(restauranteId) {
   try {
     // Crea el restaurante en la base de datos utilizando el modelo
-    const deletedRestaurant = await RestaurantModel.destroy( {where:{id:restaurantId}} )
+    const deletedRestaurante = await RestauranteModel.destroy( {where:{id:restauranteId}} )
 
     // Devuelve el restaurante creado
-    return deletedRestaurant;
+    return deletedRestaurante;
   } catch (error) {
     throw new Error('Error al crear el restaurante desde el JSON');
   }
 }
 
-async function updateRestaurant(restaurantId,data) {
+async function updateRestaurante(restauranteId,data) {
   try {
     const { name, location, weblink, image, id_departamento } = data;
 
     // Crea el restaurante en la base de datos utilizando el modelo
-    const findRestaurant = await RestaurantModel.findByPk(restaurantId)
+    const findRestaurante = await RestauranteModel.findByPk(restauranteId)
         
-    const updatedRestaurant = await findRestaurant.update({
+    const updatedRestaurante = await RestauranteModel.update({
       name,
       location,
       weblink,
@@ -64,16 +64,16 @@ async function updateRestaurant(restaurantId,data) {
     });
 
     // Devuelve el restaurante creado
-    return updatedRestaurant;
+    return updatedRestaurante;
   } catch (error) {
     throw new Error('Error al modificar el restaurante desde el JSON');
   }
 }
 
-async function findByIdRestaurant(restaurantId) {
+async function findByIdRestaurante(restauranteId) {
   try {
-    const findRestaurant = await RestaurantModel.findByPk(restaurantId); 
-    return findRestaurant;
+    const findRestaurante = await RestauranteModel.findByPk(restauranteId); 
+    return findRestaurante;
   } catch (error) {
     throw new Error('Error al obtener el restaurante desde la base de datos');
   }
@@ -82,8 +82,8 @@ async function findByIdRestaurant(restaurantId) {
 
 module.exports = {
   findAll,
-  createRestaurant,
-  deleteRestaurant,
-  updateRestaurant,
-  findByIdRestaurant,
+  createRestaurante,
+  deleteRestaurante,
+  updateRestaurante,
+  findByIdRestaurante,
 };

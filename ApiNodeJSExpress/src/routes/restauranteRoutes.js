@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const RestaurantController = require('../controllers/restaurantController');
+const RestauranteController = require('../controllers/restauranteController');
 
 /**
  * @swagger
@@ -13,7 +13,7 @@ const RestaurantController = require('../controllers/restaurantController');
 // Ruta para crear un nuevo restaurante
 /**
  * @swagger
- * /createRestaurant:
+ * /createRestaurante:
  *   post:
  *    summary: Crea un nuevo restaurante
  *    tags: [Restaurantes]
@@ -43,17 +43,17 @@ const RestaurantController = require('../controllers/restaurantController');
  *     500:
  *      description: Error interno del servidor
  */
-router.post('/createRestaurant', RestaurantController.createRestaurant); //Especificar post en postman
+router.post('/createRestaurante', RestauranteController.createRestaurante); //Especificar post en postman
 
 // Ruta para eliminar un restaurante por su ID
 /**
  * @swagger
- * /deleteRestaurant/{restaurantId}:
+ * /deleteRestaurante/{restauranteId}:
  *   delete:
  *    summary: Elimina un restaurante por su ID
  *    tags: [Restaurantes]
  *    parameters:
- *      - name: restaurantId
+ *      - name: restauranteId
  *        in: path
  *        required: true
  *        description: ID del restaurante a eliminar
@@ -68,12 +68,12 @@ router.post('/createRestaurant', RestaurantController.createRestaurant); //Espec
  *     500:
  *      description: Error interno del servidor
  */
-router.delete('/deleteRestaurant/:restaurantId', RestaurantController.deleteRestaurant); //Especificar delete en postman
+router.delete('/deleteRestaurante/:restauranteId', RestauranteController.deleteRestaurante); //Especificar delete en postman
 
 // Ruta para actualizar un restaurante por su ID
 /**
  * @swagger
- * /updateRestaurant/{restaurantId}:
+ * /updateRestaurante/{restauranteId}:
  *   put:
  *    summary: Actualiza un restaurante por su ID
  *    tags: [Restaurantes]
@@ -110,12 +110,12 @@ router.delete('/deleteRestaurant/:restaurantId', RestaurantController.deleteRest
  *    500:
  *     description: Error interno del servidor
  */
-router.put('/updateRestaurant/:restaurantId', RestaurantController.updateRestaurant); //Especificar put en postman
+router.put('/updateRestaurante/:restauranteId', RestauranteController.updateRestaurante); //Especificar put en postman
 
 // Ruta para obtener un Restaurante por su ID
 /**
  * @swagger
- * /findByIdRestaurant/{restaurantId}:
+ * /findByIdRestaurante/{restauranteId}:
  *   get:
  *    summary: Obtiene un restaurante por su ID
  *    tags: [Restaurantes]
@@ -135,12 +135,12 @@ router.put('/updateRestaurant/:restaurantId', RestaurantController.updateRestaur
  *    500:
  *     description: Error interno del servidor
  */
-router.get('/findByIdRestaurant/:restaurantId', RestaurantController.findByIdRestaurant)
+router.get('/findByIdRestaurante/:restauranteId', RestauranteController.findByIdRestaurante)
 
 // Ruta para obtener todos los restaurantes
 /**
  * @swagger
- * /findAllRestaurant:
+ * /findAllRestaurante:
  *  get:
  *   summary: Obtiene todos los restaurantes
  *   tags: [Restaurantes]
@@ -154,7 +154,7 @@ router.get('/findByIdRestaurant/:restaurantId', RestaurantController.findByIdRes
  *    500:
  *     description: Error interno del servidor
  */
-router.get('/findAllRestaurant', RestaurantController.findAll);
+router.get('/findAllRestaurante', RestauranteController.findAll);
 
  
 module.exports = router;

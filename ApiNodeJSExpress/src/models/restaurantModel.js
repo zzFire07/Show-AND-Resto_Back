@@ -1,9 +1,9 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/database.js');
 
-class RestaurantModel extends Model {}
+class RestauranteModel extends Model {}
 
-RestaurantModel.init(
+RestauranteModel.init(
   {
     // Atributos del restaurante
     name: {
@@ -33,5 +33,5 @@ RestaurantModel.init(
 
 
 
-module.exports = RestaurantModel;
+module.exports = RestauranteModel;
 
