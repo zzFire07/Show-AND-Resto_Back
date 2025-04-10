@@ -47,14 +47,14 @@ async function updateTipoComida(tipoComidaId,data) {
 
     const findTipoComida = await tipoComidaModel.findByPk(tipoComidaId)
         
-    const updatedTipoComida = await tipoComidaModel.update({
+    const updatedTipoComida = await findTipoComida.update({
       name,
     });
 
     // Devuelve el restaurante creado
     return updatedTipoComida;
   } catch (error) {
-    throw new Error('Error al modificar el tipo de comida desde el JSON :' + error.message);
+    throw new Error('Error al modificar el tipo de comida desde el JSON');
   }
 }
 
