@@ -12,7 +12,7 @@ tipoComidaModel.init(
   },
   {
     sequelize,
-    modelName: 'FoodType', // Nombre del modelo
+    modelName: 'tipoComida', // Nombre del modelo
     schema: 'public',
     tableName: 'tipocomidas', // Nombre de la tabla en la base de datos
     timestamps: false, // Si no necesitas createdAt y updatedAt

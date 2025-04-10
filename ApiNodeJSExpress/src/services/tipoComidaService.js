@@ -60,7 +60,7 @@ async function updateTipoComida(tipoComidaId,data) {
 
 async function findByIdTipoComida(tipoComidaId) {
   try {
-    const findTipoComida = await FoodTypeModel.findByPk(tipoComidaId); 
+    const findTipoComida = await tipoComidaModel.findByPk(tipoComidaId); 
     
     return findTipoComida;
   } catch (error) {
