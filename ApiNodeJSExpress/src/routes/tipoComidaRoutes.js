@@ -88,12 +88,12 @@ router.delete('/deleteTipoComida/:tipoComidaId', tipoComidaController.deleteTipo
  *              description: Nombre del tipo de comida
  *              example: "Comida Italiana"
  *     responses:
- *       200:
- *         description: Tipo de comida encontrado
- *       404:
- *         description: Tipo de comida no encontrado
- *       500:
- *         description: Error interno del servidor
+ *      200:
+ *       description: Tipo de comida encontrado
+ *      404:
+ *       description: Tipo de comida no encontrado
+ *      500:
+ *       description: Error interno del servidor
  */
 router.put('/updateTipoComida/:tipoComidaId', tipoComidaController.updateTipoComida); //Especificar put en postman
 
