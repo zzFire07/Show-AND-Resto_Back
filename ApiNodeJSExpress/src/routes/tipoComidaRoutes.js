@@ -100,12 +100,12 @@ router.put('/updateTipoComida/:tipoComidaId', tipoComidaController.updateTipoCom
 
 /**
  * @swagger
- * /findByIdFoodType/{foodTypeId}:
+ * /findByIdTipoComida/{tipoComidaId}:
  *   get:
  *     summary: Obtiene un tipo de comida por su ID
  *     tags: [Tipos de comida]
  *     parameters:
- *       - name: foodTypeId
+ *       - name: tipoComidaId
  *         in: path
  *         required: true
  *         description: ID del show a buscar
