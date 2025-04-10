@@ -67,7 +67,7 @@ router.delete('/deleteTipoComida/:tipoComidaId', tipoComidaController.deleteTipo
 /**
  * @swagger
  * /updateTipoComida/{tipoComidaId}:
- *   get:
+ *   put:
  *     summary: Actualiza un tipo de comida por su ID
  *     tags: [Tipos de comida]
  *     parameters:
